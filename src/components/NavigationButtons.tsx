@@ -2,6 +2,7 @@
 import styled from 'styled-components'
 import { flex } from '../styles/mixins'
 import { colors } from '../styles/variables'
+import { useFormContext } from '../utils/customHooks'
 
 const Container = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}
@@ -9,19 +10,34 @@ const Container = styled.div`
   font-size: 0.875rem;
 `
 
-const Next = styled.a`
+const Next = styled.button`
   background: ${colors.primaryInteractive};
   color: ${colors.tertiaryClr};
-  padding: 0.875rem 1rem;
-  line-height: 1;
+  padding: 0.75rem 1rem;
   border-radius: 0.25rem;
 `
 
+const Confirm = styled(Next)`
+  background: ${colors.secondaryInteractive};
+`
+
 function NavigationButtons() {
+  const { currentStep, setNextStep, setPrevStep, confirm } = useFormContext()
+
   return (
     <Container>
-      <a href="#">Go Back</a>
-      <Next href="#">Next Step</Next>
+      <button type="button" onClick={setPrevStep}>
+        Go Back
+      </button>
+      {currentStep === 3 ? (
+        <Confirm type="button" onClick={confirm}>
+          Confirm
+        </Confirm>
+      ) : (
+        <Next type="button" onClick={setNextStep}>
+          Next Step
+        </Next>
+      )}
     </Container>
   )
 }

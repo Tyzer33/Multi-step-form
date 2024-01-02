@@ -6,6 +6,7 @@ const Container = styled.footer`
   width: 100%;
   background: ${colors.elementBg};
   padding: 1rem;
+  box-shadow: 0 0 1rem 0 hsla(0, 0%, 0%, 0.025);
 `
 
 function Footer() {

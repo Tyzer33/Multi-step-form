@@ -6,6 +6,9 @@ export const colors = {
   secondaryClr: 'hsl(213, 96%, 18%)',
   elementBg: 'hsl(0, 0%, 100%)',
   primaryInteractive: 'hsl(213, 96%, 18%)',
+  secondaryInteractive: 'hsl(243, 100%, 62%)',
+  placeholder: 'hsl(231, 11%, 63%)',
+  border: 'hsl(229, 24%, 87%)',
 
   // - Marine blue: hsl(213, 96%, 18%)
   // - Purplish blue: hsl(243, 100%, 62%)

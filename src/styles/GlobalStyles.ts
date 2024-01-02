@@ -31,13 +31,19 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
   }
 
+  button {
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+
   // Fonts
 
   body {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
     font-size: 1rem;
-    line-height: 1.5625em;
     color: ${colors.text};
   }
 

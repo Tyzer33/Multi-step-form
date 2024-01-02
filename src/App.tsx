@@ -2,14 +2,17 @@ import GlobalStyles from './styles/GlobalStyles'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import MainContent from './components/MainContent'
+import { useFormContext } from './utils/customHooks'
 
 function App() {
+  const { isCompleted } = useFormContext()
+
   return (
     <>
       <GlobalStyles />
       <Header />
       <MainContent />
-      <Footer />
+      {!isCompleted && <Footer />}
     </>
   )
 
@@ -59,28 +62,7 @@ export default App
 
   <!-- Sidebar end -->
 
-  <!-- Step 1 start -->
-
-  Personal info
-  Please provide your name, email address, and phone number.
-
-  Name
-  e.g. Stephen King
-
-  Email Address
-  e.g. stephenking@lorem.com
-
-  Phone Number
-  e.g. +1 234 567 890
-
-  Next Step
-
-  <!-- Step 1 end -->
-
   <!-- Step 2 start -->
-
-  Select your plan
-  You have the option of monthly or yearly billing.
 
   Arcade
   $9/mo
@@ -94,15 +76,9 @@ export default App
   Monthly
   Yearly
 
-  Go Back
-  Next Step
-
   <!-- Step 2 end -->
 
   <!-- Step 3 start -->
-
-  Pick add-ons
-  Add-ons help enhance your gaming experience.
 
   Online service
   Access to multiplayer games
@@ -116,22 +92,13 @@ export default App
   Custom theme on your profile
   +$2/mo
 
-  Go Back
-  Next Step
-
   <!-- Step 3 end -->
 
   <!-- Step 4 start -->
 
-  Finishing up
-  Double-check everything looks OK before confirming.
-
   <!-- Dynamically add subscription and add-on selections here -->
 
   Total (per month/year)
-
-  Go Back
-  Confirm
 
   <!-- Step 4 end -->
 

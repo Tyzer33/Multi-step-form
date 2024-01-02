@@ -1,23 +1,29 @@
 import styled from 'styled-components'
 import Confirmation from './Confirmation'
-import FinishingUp from './FinishingUp'
-import PersonalInfo from './PersonalInfo'
-import PickAddOns from './PickAddOns'
-import SelectPlan from './SelectPlan'
+import { colors } from '../styles/variables'
+import { useFormContext } from '../utils/customHooks'
+import Forms from './Forms'
 
-const Container = styled.main`
+const Wrapper = styled.main`
   flex: 1;
+  width: 100%;
+`
+
+const Container = styled.div`
+  background: ${colors.elementBg};
+  border-radius: 0.625rem;
+  box-shadow: 0 1rem 1.75rem -1rem hsla(0, 0%, 0%, 0.08);
+  padding: 2rem 1.5rem;
+  margin: 0 1rem 1.5rem;
 `
 
 function MainContent() {
+  const { isCompleted } = useFormContext()
+
   return (
-    <Container>
-      <PersonalInfo />
-      <SelectPlan />
-      <PickAddOns />
-      <FinishingUp />
-      <Confirmation />
-    </Container>
+    <Wrapper>
+      <Container>{!isCompleted ? <Forms /> : <Confirmation />}</Container>
+    </Wrapper>
   )
 }
 
