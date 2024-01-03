@@ -5,7 +5,7 @@ import MainContent from './components/MainContent'
 import { useFormContext } from './utils/customHooks'
 
 function App() {
-  const { isCompleted } = useFormContext()
+  const { isCompleted } = useFormContext().formData
 
   return (
     <>

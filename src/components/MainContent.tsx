@@ -18,7 +18,7 @@ const Container = styled.div`
 `
 
 function MainContent() {
-  const { isCompleted } = useFormContext()
+  const { isCompleted } = useFormContext().formData
 
   return (
     <Wrapper>

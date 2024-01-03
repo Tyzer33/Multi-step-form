@@ -31,7 +31,7 @@ const Step = styled.div<{ $active?: boolean }>`
 
 // TODO: Mapper pour les steps
 function FormSteps() {
-  const { currentStep } = useFormContext()
+  const { currentStep } = useFormContext().formData
   return (
     <Container>
       <Step $active={currentStep === 0}>1</Step>

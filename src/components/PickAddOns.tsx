@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { flex } from '../styles/mixins'
 import { colors } from '../styles/variables'
-import { addons } from '../utils/data'
+import { ADDONS } from '../utils/data'
 import { useFormContext } from '../utils/customHooks'
 import checkedIcon from '../assets/icon-checkmark.svg'
 
@@ -72,18 +72,19 @@ const Price = styled.p`
 `
 
 function PickAddOns() {
-  const { isYearly, selectedAddons, toggleAddon } = useFormContext()
+  const { formData, toggleAddon } = useFormContext()
+  const { selectedAddons, isYearly } = formData
 
   return (
     <Container>
-      {addons.map(({ name, description, price }) => (
-        <CheckboxContainer htmlFor={name} key={name} $selected={selectedAddons[name]}>
-          <StyledCheckbox $selected={selectedAddons[name]}>
+      {ADDONS.map(({ name, description, price }) => (
+        <CheckboxContainer htmlFor={name} key={name} $selected={selectedAddons.includes(name)}>
+          <StyledCheckbox $selected={selectedAddons.includes(name)}>
             <Checkbox
               type="checkbox"
               name="plan"
               id={name}
-              checked={selectedAddons[name]}
+              checked={selectedAddons.includes(name)}
               onChange={() => toggleAddon(name)}
             />
           </StyledCheckbox>

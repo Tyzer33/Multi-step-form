@@ -1,17 +1,26 @@
-export type FormContextType = {
+import { ADDONS, PLANS } from './data'
+
+export type AddonsNames = (typeof ADDONS)[number]['name']
+export type Plan = (typeof PLANS)[number]['name']
+
+export type FormDataType = {
   currentStep: number
+  name: string
+  email: string
+  phoneNumber: string
+  selectedPlan: Plan
+  isYearly: boolean
+  isCompleted: boolean
+  selectedAddons: AddonsNames[]
+}
+
+export type FormContextType = {
+  formData: FormDataType
+  setCurrentStep: (step: number) => void
   setNextStep: () => void
   setPrevStep: () => void
-  isCompleted: boolean
+  setSelectedPlan: (plan: Plan) => void
+  setIsYearly: (isYearly: boolean) => void
+  toggleAddon: (addon: AddonsNames) => void
   confirm: () => void
-  isYearly: boolean
-  setIsYearly: React.Dispatch<React.SetStateAction<boolean>>
-  selectedPlan: string
-  setSelectedPlan: React.Dispatch<React.SetStateAction<string>>
-  selectedAddons: {
-    'Online service': boolean
-    'Larger storage': boolean
-    'Customizable profile': boolean
-  }
-  toggleAddon: (key: 'Online service' | 'Larger storage' | 'Customizable profile') => void
 }

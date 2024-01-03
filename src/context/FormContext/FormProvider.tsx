@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import FormContext from './FormContext'
+import { AddonsNames, FormDataType, Plan } from '../../utils/types'
 
 type Props = {
   children: React.ReactNode
@@ -9,57 +10,75 @@ type Props = {
 // TODO: Envoyer les données du formulaire au serveur quand le formulaire est complété
 
 function FormProvider({ children }: Props) {
-  const [currentStep, setCurrentStep] = useState(2) // TODO: Remettre à 0
-  const [isYearly, setIsYearly] = useState(false)
-  const [selectedPlan, setSelectedPlan] = useState('Arcade') // TODO: type = 'Arcade' | 'Advanced' | 'Pro'
-  const [selectedAddons, setSelectedAddons] = useState({
-    'Online service': false,
-    'Larger storage': false,
-    'Customizable profile': false,
+  const [formData, setFormData] = useState<FormDataType>({
+    currentStep: 3, // TODO: Remettre à 0
+    name: '',
+    email: '',
+    phoneNumber: '',
+    selectedPlan: 'Arcade',
+    isYearly: false,
+    selectedAddons: [],
+    isCompleted: false,
   })
-  const [isCompleted, setIsCompleted] = useState(false)
+
+  const setCurrentStep = useCallback((step: number) => {
+    setFormData((prev) => ({ ...prev, currentStep: step }))
+  }, [])
 
   const setNextStep = useCallback(() => {
-    setCurrentStep((prevState) => (prevState < 3 ? prevState + 1 : 3))
+    setFormData((prev) => ({
+      ...prev,
+      currentStep: prev.currentStep < 3 ? prev.currentStep + 1 : 3,
+    }))
   }, [])
 
   const setPrevStep = useCallback(() => {
-    setCurrentStep((prevState) => (prevState > 0 ? prevState - 1 : 0))
+    setFormData((prev) => ({
+      ...prev,
+      currentStep: prev.currentStep > 0 ? prev.currentStep - 1 : 0,
+    }))
+  }, [])
+
+  const setSelectedPlan = useCallback((selectedPlan: Plan) => {
+    setFormData((prev) => ({ ...prev, selectedPlan }))
+  }, [])
+
+  const setIsYearly = useCallback((isYearly: boolean) => {
+    setFormData((prev) => ({ ...prev, isYearly }))
   }, [])
 
   const confirm = useCallback(() => {
-    setIsCompleted(true)
+    setFormData((prev) => ({ ...prev, isCompleted: true }))
   }, [])
 
-  const toggleAddon = useCallback((key: keyof typeof selectedAddons) => {
-    setSelectedAddons((prevState) => ({ ...prevState, [key]: !prevState[key] }))
+  const toggleAddon = useCallback((addon: AddonsNames) => {
+    setFormData((prev) => {
+      if (prev.selectedAddons.includes(addon)) {
+        return { ...prev, selectedAddons: prev.selectedAddons.filter((name) => name !== addon) }
+      }
+      return { ...prev, selectedAddons: [...prev.selectedAddons, addon] }
+    })
   }, [])
 
   const value = useMemo(
     () => ({
-      currentStep,
+      formData,
+      setCurrentStep,
       setNextStep,
       setPrevStep,
-      isCompleted,
-      confirm,
-      isYearly,
-      setIsYearly,
-      selectedPlan,
       setSelectedPlan,
-      selectedAddons,
+      setIsYearly,
+      confirm,
       toggleAddon,
     }),
     [
-      currentStep,
+      formData,
+      setCurrentStep,
+      setSelectedPlan,
+      setIsYearly,
       setNextStep,
       setPrevStep,
-      isCompleted,
       confirm,
-      isYearly,
-      setIsYearly,
-      selectedPlan,
-      setSelectedPlan,
-      selectedAddons,
       toggleAddon,
     ],
   )

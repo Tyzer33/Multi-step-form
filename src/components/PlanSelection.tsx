@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { plan } from '../utils/data'
+import { PLANS } from '../utils/data'
 import { flex } from '../styles/mixins'
 import { useFormContext } from '../utils/customHooks'
 import { colors } from '../styles/variables'
@@ -58,18 +58,18 @@ const Saving = styled.p`
 `
 
 function PlanSelection() {
-  const { selectedPlan, setSelectedPlan, isYearly } = useFormContext()
-
+  const { formData, setSelectedPlan } = useFormContext()
+  const { selectedPlan, isYearly } = formData
   return (
     <Container>
-      {plan.map(({ name, price, logo }) => (
+      {PLANS.map(({ name, price, logo }) => (
         <RadioContainer htmlFor={name} key={name} $selected={name === selectedPlan}>
           <RadioButton
             type="radio"
             name="plan"
             id={name}
             checked={name === selectedPlan}
-            onChange={(e) => setSelectedPlan(e.target.checked ? name : selectedPlan)}
+            onChange={(e) => e.target.checked && setSelectedPlan(name)}
           />
           <Logo src={logo} alt={`${name}'s logo`} />
           <TextContainer>

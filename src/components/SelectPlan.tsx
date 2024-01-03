@@ -48,7 +48,8 @@ const Checkbox = styled.input`
 `
 
 function SelectPlan() {
-  const { isYearly, setIsYearly } = useFormContext()
+  const { formData, setIsYearly } = useFormContext()
+  const { isYearly } = formData
 
   return (
     <Container>

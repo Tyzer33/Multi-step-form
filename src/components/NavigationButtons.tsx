@@ -24,7 +24,8 @@ const Confirm = styled(Next)`
 `
 
 function NavigationButtons() {
-  const { currentStep, setNextStep, setPrevStep, confirm } = useFormContext()
+  const { formData, setNextStep, setPrevStep, confirm } = useFormContext()
+  const { currentStep } = formData
 
   return (
     <Container>
