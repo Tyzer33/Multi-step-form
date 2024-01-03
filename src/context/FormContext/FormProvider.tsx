@@ -9,9 +9,14 @@ type Props = {
 // TODO: Envoyer les données du formulaire au serveur quand le formulaire est complété
 
 function FormProvider({ children }: Props) {
-  const [currentStep, setCurrentStep] = useState(1) // TODO: Remettre à 0
+  const [currentStep, setCurrentStep] = useState(2) // TODO: Remettre à 0
   const [isYearly, setIsYearly] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState('Arcade') // TODO: type = 'Arcade' | 'Advanced' | 'Pro'
+  const [selectedAddons, setSelectedAddons] = useState({
+    'Online service': false,
+    'Larger storage': false,
+    'Customizable profile': false,
+  })
   const [isCompleted, setIsCompleted] = useState(false)
 
   const setNextStep = useCallback(() => {
@@ -26,6 +31,10 @@ function FormProvider({ children }: Props) {
     setIsCompleted(true)
   }, [])
 
+  const toggleAddon = useCallback((key: keyof typeof selectedAddons) => {
+    setSelectedAddons((prevState) => ({ ...prevState, [key]: !prevState[key] }))
+  }, [])
+
   const value = useMemo(
     () => ({
       currentStep,
@@ -37,6 +46,8 @@ function FormProvider({ children }: Props) {
       setIsYearly,
       selectedPlan,
       setSelectedPlan,
+      selectedAddons,
+      toggleAddon,
     }),
     [
       currentStep,
@@ -48,6 +59,8 @@ function FormProvider({ children }: Props) {
       setIsYearly,
       selectedPlan,
       setSelectedPlan,
+      selectedAddons,
+      toggleAddon,
     ],
   )
 
