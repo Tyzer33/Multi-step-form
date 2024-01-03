@@ -37,15 +37,15 @@ function PersonalInfo() {
     <Form>
       <Label htmlFor="name">
         Name
-        <Input type="text" id="name" placeholder="e.g. Stephen King" />
+        <Input type="text" placeholder="e.g. Stephen King" />
       </Label>
       <Label htmlFor="email">
         Email Address
-        <Input type="email" id="email" placeholder="e.g. stephenking@lorem.com" />
+        <Input type="email" placeholder="e.g. stephenking@lorem.com" />
       </Label>
       <Label htmlFor="phone">
         Phone Number
-        <Input type="tel" id="phone" placeholder="e.g. +1 234 567 890" />
+        <Input type="tel" placeholder="e.g. +1 234 567 890" />
       </Label>
     </Form>
   )

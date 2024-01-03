@@ -1,4 +1,7 @@
-/* eslint-disable import/prefer-default-export */
+import arcadeLogo from '../assets/icon-arcade.svg'
+import advancedLogo from '../assets/icon-advanced.svg'
+import proLogo from '../assets/icon-pro.svg'
+
 export const formDescription = [
   {
     heading: 'Personal info',
@@ -16,4 +19,10 @@ export const formDescription = [
     heading: 'Finishing up',
     description: 'Double-check everything looks OK before confirming.',
   },
+]
+
+export const plan = [
+  { name: 'Arcade', price: 9, logo: arcadeLogo },
+  { name: 'Advanced', price: 12, logo: advancedLogo },
+  { name: 'Pro', price: 15, logo: proLogo },
 ]

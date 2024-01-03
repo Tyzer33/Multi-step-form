@@ -9,7 +9,9 @@ type Props = {
 // TODO: Envoyer les données du formulaire au serveur quand le formulaire est complété
 
 function FormProvider({ children }: Props) {
-  const [currentStep, setCurrentStep] = useState(0)
+  const [currentStep, setCurrentStep] = useState(1) // TODO: Remettre à 0
+  const [isYearly, setIsYearly] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState('Arcade') // TODO: type = 'Arcade' | 'Advanced' | 'Pro'
   const [isCompleted, setIsCompleted] = useState(false)
 
   const setNextStep = useCallback(() => {
@@ -25,8 +27,28 @@ function FormProvider({ children }: Props) {
   }, [])
 
   const value = useMemo(
-    () => ({ currentStep, setNextStep, setPrevStep, isCompleted, confirm }),
-    [currentStep, setNextStep, setPrevStep, isCompleted, confirm],
+    () => ({
+      currentStep,
+      setNextStep,
+      setPrevStep,
+      isCompleted,
+      confirm,
+      isYearly,
+      setIsYearly,
+      selectedPlan,
+      setSelectedPlan,
+    }),
+    [
+      currentStep,
+      setNextStep,
+      setPrevStep,
+      isCompleted,
+      confirm,
+      isYearly,
+      setIsYearly,
+      selectedPlan,
+      setSelectedPlan,
+    ],
   )
 
   return <FormContext.Provider value={value}>{children}</FormContext.Provider>
