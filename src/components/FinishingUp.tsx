@@ -1,5 +1,12 @@
+import styled from 'styled-components'
 import { useFormContext } from '../utils/customHooks'
 import { ADDONS, PLANS } from '../utils/data'
+
+const Line = styled.hr``
+
+const TotalContainer = styled.div``
+
+// TODO: Terminer le composant FinishingUp
 
 function FinishingUp() {
   const { formData, setCurrentStep } = useFormContext()
@@ -20,7 +27,7 @@ function FinishingUp() {
           </div>
           <p>{`$${selectedPlanPrice}/${frequency}`}</p>
         </div>
-        <hr />
+        <Line />
         <div>
           {selectedAddons.map((selectedAddon) => {
             const addonPrice = ADDONS.find((addon) => addon.name === selectedAddon)?.price
@@ -33,10 +40,10 @@ function FinishingUp() {
           })}
         </div>
       </div>
-      <div>
+      <TotalContainer>
         <p>{`Total (per ${isYearly ? 'year' : 'month'})`}</p>
-        <p> </p>
-      </div>
+        <p>{`$${12}/${frequency}`}</p>
+      </TotalContainer>
     </div>
   )
 }
