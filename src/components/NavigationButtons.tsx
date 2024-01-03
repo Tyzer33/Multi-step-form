@@ -15,6 +15,8 @@ const Next = styled.button`
   color: ${colors.tertiaryClr};
   padding: 0.75rem 1rem;
   border-radius: 0.25rem;
+
+  margin-left: auto; // Keep "Next Step" on the right when "Go Back" is not displayed
 `
 
 const Confirm = styled(Next)`
@@ -26,9 +28,11 @@ function NavigationButtons() {
 
   return (
     <Container>
-      <button type="button" onClick={setPrevStep}>
-        Go Back
-      </button>
+      {currentStep > 0 && (
+        <button type="button" onClick={setPrevStep}>
+          Go Back
+        </button>
+      )}
       {currentStep === 3 ? (
         <Confirm type="button" onClick={confirm}>
           Confirm
