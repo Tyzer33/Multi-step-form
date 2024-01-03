@@ -7,9 +7,10 @@ export const colors = {
   elementBg: 'hsl(0, 0%, 100%)',
   primaryInteractive: 'hsl(213, 96%, 18%)',
   secondaryInteractive: 'hsl(243, 100%, 62%)',
+  highlightText: 'hsl(243, 100%, 62%)',
   placeholder: 'hsl(231, 11%, 63%)',
   border: 'hsl(229, 24%, 87%)',
-  planBg: 'hsl(231, 100%, 99%)',
+  innerElBg: 'hsl(231, 100%, 99%)',
 
   // - Marine blue: hsl(213, 96%, 18%)
   // - Purplish blue: hsl(243, 100%, 62%)

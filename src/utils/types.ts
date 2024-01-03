@@ -1,7 +1,7 @@
 import { ADDONS, PLANS } from './data'
 
-export type AddonsNames = (typeof ADDONS)[number]['name']
-export type Plan = (typeof PLANS)[number]['name']
+export type AddonsNames = keyof typeof ADDONS
+export type Plan = keyof typeof PLANS
 
 export type FormDataType = {
   currentStep: number
@@ -23,4 +23,5 @@ export type FormContextType = {
   setIsYearly: (isYearly: boolean) => void
   toggleAddon: (addon: AddonsNames) => void
   confirm: () => void
+  calculTotal: () => number
 }

@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react'
 import FormContext from './FormContext'
 import { AddonsNames, FormDataType, Plan } from '../../utils/types'
+import { ADDONS, PLANS } from '../../utils/data'
 
 type Props = {
   children: React.ReactNode
@@ -11,7 +12,7 @@ type Props = {
 
 function FormProvider({ children }: Props) {
   const [formData, setFormData] = useState<FormDataType>({
-    currentStep: 3, // TODO: Remettre à 0
+    currentStep: 0, // TODO: Remettre à 0
     name: '',
     email: '',
     phoneNumber: '',
@@ -47,10 +48,6 @@ function FormProvider({ children }: Props) {
     setFormData((prev) => ({ ...prev, isYearly }))
   }, [])
 
-  const confirm = useCallback(() => {
-    setFormData((prev) => ({ ...prev, isCompleted: true }))
-  }, [])
-
   const toggleAddon = useCallback((addon: AddonsNames) => {
     setFormData((prev) => {
       if (prev.selectedAddons.includes(addon)) {
@@ -59,6 +56,22 @@ function FormProvider({ children }: Props) {
       return { ...prev, selectedAddons: [...prev.selectedAddons, addon] }
     })
   }, [])
+
+  const confirm = useCallback(() => {
+    setFormData((prev) => ({ ...prev, isCompleted: true }))
+  }, [])
+
+  const calculTotal = useCallback(() => {
+    const { selectedPlan, selectedAddons, isYearly } = formData
+    const selectedPlanPrice = PLANS[selectedPlan].price
+    const addonsTotalPrice = selectedAddons.reduce(
+      (acc, selectedAddon) => acc + ADDONS[selectedAddon].price,
+      0,
+    )
+
+    const monthlyTotal = selectedPlanPrice + addonsTotalPrice
+    return isYearly ? monthlyTotal * 10 : monthlyTotal
+  }, [formData])
 
   const value = useMemo(
     () => ({
@@ -70,6 +83,7 @@ function FormProvider({ children }: Props) {
       setIsYearly,
       confirm,
       toggleAddon,
+      calculTotal,
     }),
     [
       formData,
@@ -80,6 +94,7 @@ function FormProvider({ children }: Props) {
       setPrevStep,
       confirm,
       toggleAddon,
+      calculTotal,
     ],
   )
 

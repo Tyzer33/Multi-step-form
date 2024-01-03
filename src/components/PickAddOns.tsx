@@ -23,7 +23,7 @@ const CheckboxContainer = styled.label<{ $selected: boolean }>`
     $selected &&
     css`
       border: 1px solid ${colors.secondaryInteractive};
-      background: ${colors.planBg};
+      background: ${colors.innerElBg};
     `}
 `
 
@@ -74,10 +74,11 @@ const Price = styled.p`
 function PickAddOns() {
   const { formData, toggleAddon } = useFormContext()
   const { selectedAddons, isYearly } = formData
+  const ADDONSARR = Object.values(ADDONS)
 
   return (
     <Container>
-      {ADDONS.map(({ name, description, price }) => (
+      {ADDONSARR.map(({ name, description, price }) => (
         <CheckboxContainer htmlFor={name} key={name} $selected={selectedAddons.includes(name)}>
           <StyledCheckbox $selected={selectedAddons.includes(name)}>
             <Checkbox

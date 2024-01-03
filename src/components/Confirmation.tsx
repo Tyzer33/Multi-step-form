@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import thankYouIcon from '../assets/icon-thank-you.svg'
-
 import { flex } from '../styles/mixins'
 import { colors } from '../styles/variables'
 

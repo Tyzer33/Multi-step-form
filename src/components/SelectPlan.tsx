@@ -12,7 +12,7 @@ const Container = styled.form`
 const SwitchContainer = styled.div`
   ${flex({ direction: 'row', justify: 'center', align: 'center' })}
   gap: 1.5rem;
-  background: ${colors.planBg};
+  background: ${colors.innerElBg};
   border-radius: 0.625rem;
   padding-block: 1rem;
 `

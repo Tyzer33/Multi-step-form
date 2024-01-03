@@ -21,14 +21,28 @@ export const FORMDESCRIPTION = [
   },
 ]
 
-export const PLANS = [
-  { name: 'Arcade', price: 9, logo: arcadeLogo },
-  { name: 'Advanced', price: 12, logo: advancedLogo },
-  { name: 'Pro', price: 15, logo: proLogo },
-] as const
+// export const PLANS = [
+//   { name: 'Arcade', price: 9, logo: arcadeLogo },
+//   { name: 'Advanced', price: 12, logo: advancedLogo },
+//   { name: 'Pro', price: 15, logo: proLogo },
+// ] as const
 
-export const ADDONS = [
-  { name: 'Online service', description: 'Access to multiplayer games', price: 1 },
-  { name: 'Larger storage', description: 'Extra 1TB of cloud save', price: 2 },
-  { name: 'Customizable profile', description: 'Custom theme on your profile', price: 2 },
-] as const
+export const PLANS = {
+  Arcade: { name: 'Arcade', price: 9, logo: arcadeLogo },
+  Advanced: { name: 'Advanced', price: 12, logo: advancedLogo },
+  Pro: { name: 'Pro', price: 15, logo: proLogo },
+} as const
+
+export const ADDONS = {
+  'Online service': {
+    name: 'Online service',
+    description: 'Access to multiplayer games',
+    price: 1,
+  },
+  'Larger storage': { name: 'Larger storage', description: 'Extra 1TB of cloud save', price: 2 },
+  'Customizable profile': {
+    name: 'Customizable profile',
+    description: 'Custom theme on your profile',
+    price: 2,
+  },
+} as const

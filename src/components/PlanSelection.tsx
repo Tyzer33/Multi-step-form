@@ -22,7 +22,7 @@ const RadioContainer = styled.label<{ $selected: boolean }>`
     $selected &&
     css`
       border: 1px solid ${colors.secondaryInteractive};
-      background: ${colors.planBg};
+      background: ${colors.innerElBg};
     `}
 `
 
@@ -60,9 +60,11 @@ const Saving = styled.p`
 function PlanSelection() {
   const { formData, setSelectedPlan } = useFormContext()
   const { selectedPlan, isYearly } = formData
+  const PLANSARR = Object.values(PLANS)
+
   return (
     <Container>
-      {PLANS.map(({ name, price, logo }) => (
+      {PLANSARR.map(({ name, price, logo }) => (
         <RadioContainer htmlFor={name} key={name} $selected={name === selectedPlan}>
           <RadioButton
             type="radio"
