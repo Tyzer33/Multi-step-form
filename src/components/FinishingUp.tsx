@@ -55,7 +55,7 @@ const TotalPrice = styled.p`
 // TODO: Plutot que *10 pour le yearly, mettre le prix annuel directement dans le fichier data.ts
 
 function FinishingUp() {
-  const { formData, setCurrentStep, calculTotal } = useFormContext()
+  const { formData, calculTotal, setInFormData } = useFormContext()
   const { selectedPlan, isYearly, selectedAddons } = formData
 
   const selectedPlanPrice = PLANS[selectedPlan].price
@@ -67,7 +67,7 @@ function FinishingUp() {
         <SelectedPlanContainer>
           <div>
             <h2>{`${selectedPlan} (${isYearly ? 'Yearly' : 'Monthly'})`}</h2>
-            <ChangeButton type="button" onClick={() => setCurrentStep(1)}>
+            <ChangeButton type="button" onClick={() => setInFormData('currentStep', 1)}>
               Change
             </ChangeButton>
           </div>

@@ -24,7 +24,7 @@ const Confirm = styled(Next)`
 `
 
 function NavigationButtons() {
-  const { formData, setNextStep, setPrevStep, confirm } = useFormContext()
+  const { formData, setNextStep, setPrevStep, setInFormData } = useFormContext()
   const { currentStep } = formData
 
   return (
@@ -35,7 +35,7 @@ function NavigationButtons() {
         </button>
       )}
       {currentStep === 3 ? (
-        <Confirm type="button" onClick={confirm}>
+        <Confirm type="button" onClick={() => setInFormData('isCompleted', true)}>
           Confirm
         </Confirm>
       ) : (

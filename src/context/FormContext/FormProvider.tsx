@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import FormContext from './FormContext'
-import { AddonsNames, FormDataType, Plan } from '../../utils/types'
+import { AddonsNames, FormDataKey, FormDataType, FormDataValueOf } from '../../utils/types'
 import { ADDONS, PLANS } from '../../utils/data'
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
 }
 
 // TODO: Stocker les valeurs du formulaire dans le contexte
+// TODO: Faire des vérifications sur les données du formulaire
 // TODO: Envoyer les données du formulaire au serveur quand le formulaire est complété
 
 function FormProvider({ children }: Props) {
@@ -22,9 +23,12 @@ function FormProvider({ children }: Props) {
     isCompleted: false,
   })
 
-  const setCurrentStep = useCallback((step: number) => {
-    setFormData((prev) => ({ ...prev, currentStep: step }))
-  }, [])
+  const setInFormData = useCallback(
+    <K extends FormDataKey>(key: K, value: FormDataValueOf<K>) => {
+      setFormData((prev) => ({ ...prev, [key]: value }))
+    },
+    [setFormData],
+  )
 
   const setNextStep = useCallback(() => {
     setFormData((prev) => ({
@@ -40,12 +44,16 @@ function FormProvider({ children }: Props) {
     }))
   }, [])
 
-  const setSelectedPlan = useCallback((selectedPlan: Plan) => {
-    setFormData((prev) => ({ ...prev, selectedPlan }))
+  const setName = useCallback((name: string) => {
+    setFormData((prev) => ({ ...prev, name }))
   }, [])
 
-  const setIsYearly = useCallback((isYearly: boolean) => {
-    setFormData((prev) => ({ ...prev, isYearly }))
+  const setEmail = useCallback((email: string) => {
+    setFormData((prev) => ({ ...prev, email }))
+  }, [])
+
+  const setPhoneNumber = useCallback((phoneNumber: string) => {
+    setFormData((prev) => ({ ...prev, phoneNumber }))
   }, [])
 
   const toggleAddon = useCallback((addon: AddonsNames) => {
@@ -55,10 +63,6 @@ function FormProvider({ children }: Props) {
       }
       return { ...prev, selectedAddons: [...prev.selectedAddons, addon] }
     })
-  }, [])
-
-  const confirm = useCallback(() => {
-    setFormData((prev) => ({ ...prev, isCompleted: true }))
   }, [])
 
   const calculTotal = useCallback(() => {
@@ -75,24 +79,24 @@ function FormProvider({ children }: Props) {
 
   const value = useMemo(
     () => ({
+      setInFormData,
       formData,
-      setCurrentStep,
       setNextStep,
       setPrevStep,
-      setSelectedPlan,
-      setIsYearly,
-      confirm,
+      setName,
+      setEmail,
+      setPhoneNumber,
       toggleAddon,
       calculTotal,
     }),
     [
+      setInFormData,
       formData,
-      setCurrentStep,
-      setSelectedPlan,
-      setIsYearly,
       setNextStep,
       setPrevStep,
-      confirm,
+      setName,
+      setEmail,
+      setPhoneNumber,
       toggleAddon,
       calculTotal,
     ],
@@ -102,3 +106,21 @@ function FormProvider({ children }: Props) {
 }
 
 export default FormProvider
+
+// TODO: Supprimer les fonctions inutiles
+
+// const setCurrentStep = useCallback((step: number) => {
+//   setFormData((prev) => ({ ...prev, currentStep: step }))
+// }, [])
+
+// const setSelectedPlan = useCallback((selectedPlan: Plan) => {
+//   setFormData((prev) => ({ ...prev, selectedPlan }))
+// }, [])
+
+// const setIsYearly = useCallback((isYearly: boolean) => {
+//   setFormData((prev) => ({ ...prev, isYearly }))
+// }, [])
+
+// const confirm = useCallback(() => {
+//   setFormData((prev) => ({ ...prev, isCompleted: true }))
+// }, [])

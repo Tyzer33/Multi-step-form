@@ -58,7 +58,7 @@ const Saving = styled.p`
 `
 
 function PlanSelection() {
-  const { formData, setSelectedPlan } = useFormContext()
+  const { formData, setInFormData } = useFormContext()
   const { selectedPlan, isYearly } = formData
   const PLANSARR = Object.values(PLANS)
 
@@ -71,7 +71,7 @@ function PlanSelection() {
             name="plan"
             id={name}
             checked={name === selectedPlan}
-            onChange={(e) => e.target.checked && setSelectedPlan(name)}
+            onChange={(e) => e.target.checked && setInFormData('selectedPlan', name)}
           />
           <Logo src={logo} alt={`${name}'s logo`} />
           <TextContainer>

@@ -48,7 +48,7 @@ const Checkbox = styled.input`
 `
 
 function SelectPlan() {
-  const { formData, setIsYearly } = useFormContext()
+  const { formData, setInFormData } = useFormContext()
   const { isYearly } = formData
 
   return (
@@ -61,7 +61,7 @@ function SelectPlan() {
             id="switch"
             type="checkbox"
             checked={isYearly}
-            onChange={(e) => setIsYearly(e.target.checked)}
+            onChange={(e) => setInFormData('isYearly', e.target.checked)}
             aria-label="Switch between Monthly to yearly plan"
           />
         </SwitchButton>

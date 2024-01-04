@@ -3,6 +3,9 @@ import { ADDONS, PLANS } from './data'
 export type AddonsNames = keyof typeof ADDONS
 export type Plan = keyof typeof PLANS
 
+export type FormDataKey = keyof FormDataType
+export type FormDataValueOf<K extends FormDataKey> = FormDataType[K]
+
 export type FormDataType = {
   currentStep: number
   name: string
@@ -15,13 +18,13 @@ export type FormDataType = {
 }
 
 export type FormContextType = {
+  setInFormData: <K extends keyof FormDataType>(key: K, value: FormDataValueOf<K>) => void
   formData: FormDataType
-  setCurrentStep: (step: number) => void
   setNextStep: () => void
   setPrevStep: () => void
-  setSelectedPlan: (plan: Plan) => void
-  setIsYearly: (isYearly: boolean) => void
+  setName: (name: string) => void
+  setEmail: (email: string) => void
+  setPhoneNumber: (phoneNumber: string) => void
   toggleAddon: (addon: AddonsNames) => void
-  confirm: () => void
   calculTotal: () => number
 }

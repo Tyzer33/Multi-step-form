@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { colors } from '../styles/variables'
 import { flex } from '../styles/mixins'
+import { useFormContext } from '../utils/customHooks'
 
 const Form = styled.form`
   ${flex({ direction: 'column' })}
@@ -33,19 +34,37 @@ const Input = styled.input`
 `
 
 function PersonalInfo() {
+  const { formData, setName, setEmail, setPhoneNumber } = useFormContext()
+  const { name, email, phoneNumber } = formData
+
   return (
     <Form>
       <Label htmlFor="name">
         Name
-        <Input type="text" placeholder="e.g. Stephen King" />
+        <Input
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          placeholder="e.g. Stephen King"
+        />
       </Label>
       <Label htmlFor="email">
         Email Address
-        <Input type="email" placeholder="e.g. stephenking@lorem.com" />
+        <Input
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          placeholder="e.g. stephenking@lorem.com"
+        />
       </Label>
       <Label htmlFor="phone">
         Phone Number
-        <Input type="tel" placeholder="e.g. +1 234 567 890" />
+        <Input
+          type="tel"
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          value={phoneNumber}
+          placeholder="e.g. +1 234 567 890"
+        />
       </Label>
     </Form>
   )
