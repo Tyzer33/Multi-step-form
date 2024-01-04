@@ -2,7 +2,7 @@ import arcadeLogo from '../assets/icon-arcade.svg'
 import advancedLogo from '../assets/icon-advanced.svg'
 import proLogo from '../assets/icon-pro.svg'
 
-export const FORMDESCRIPTION = [
+export const FORMSTEPSDESCRIPTION = [
   {
     heading: 'Personal info',
     description: 'Please provide your name, email address, and phone number.',

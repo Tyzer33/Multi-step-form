@@ -73,7 +73,6 @@ const TotalPrice = styled.p`
   color: ${colors.highlightText};
 `
 
-// TODO: Terminer le composant FinishingUp
 // TODO: Plutot que *10 pour le yearly, mettre le prix annuel directement dans le fichier data.ts
 
 function FinishingUp() {

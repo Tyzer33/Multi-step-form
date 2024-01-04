@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import { colors } from '../styles/variables'
 import { flex } from '../styles/mixins'
 import { useFormContext } from '../utils/customHooks'
+import { FORMSTEPSDESCRIPTION } from '../utils/data'
 
 const Container = styled.div`
   display: flex;
@@ -29,15 +30,15 @@ const Step = styled.div<{ $active?: boolean }>`
     `}
 `
 
-// TODO: Mapper pour les steps
 function FormSteps() {
   const { currentStep } = useFormContext().formData
   return (
     <Container>
-      <Step $active={currentStep === 0}>1</Step>
-      <Step $active={currentStep === 1}>2</Step>
-      <Step $active={currentStep === 2}>3</Step>
-      <Step $active={currentStep === 3}>4</Step>
+      {FORMSTEPSDESCRIPTION.map(({ heading }, index) => (
+        <Step key={heading} $active={currentStep === index}>
+          {index + 1}
+        </Step>
+      ))}
     </Container>
   )
 }

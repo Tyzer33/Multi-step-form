@@ -7,9 +7,7 @@ type Props = {
   children: React.ReactNode
 }
 
-// TODO: Stocker les valeurs du formulaire dans le contexte
 // TODO: Faire des vérifications sur les données du formulaire
-// TODO: Envoyer les données du formulaire au serveur quand le formulaire est complété
 
 function FormProvider({ children }: Props) {
   const [formData, setFormData] = useState<FormDataType>({
@@ -22,6 +20,16 @@ function FormProvider({ children }: Props) {
     selectedAddons: ['Larger storage', 'Online service'],
     isCompleted: false,
   })
+
+  /* Send data to server
+
+  useEffect(() => {
+    if (formData.isCompleted) {
+      fetch()
+    }
+  }, [formData.isCompleted])
+
+  ------------ */
 
   if (formData.isCompleted) {
     console.log(formData)

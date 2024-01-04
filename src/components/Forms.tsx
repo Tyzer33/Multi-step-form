@@ -6,7 +6,7 @@ import PersonalInfo from './PersonalInfo'
 import SelectPlan from './SelectPlan'
 import PickAddOns from './PickAddOns'
 import FinishingUp from './FinishingUp'
-import { FORMDESCRIPTION } from '../utils/data'
+import { FORMSTEPSDESCRIPTION } from '../utils/data'
 
 const Container = styled.div`
   ${flex({ direction: 'column' })}
@@ -30,7 +30,7 @@ const Heading = styled.h1`
 
 function Forms() {
   const { currentStep } = useFormContext().formData
-  const { heading, description } = FORMDESCRIPTION[currentStep]
+  const { heading, description } = FORMSTEPSDESCRIPTION[currentStep]
 
   return (
     <Container>
