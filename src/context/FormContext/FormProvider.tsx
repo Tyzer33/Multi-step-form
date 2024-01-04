@@ -13,15 +13,19 @@ type Props = {
 
 function FormProvider({ children }: Props) {
   const [formData, setFormData] = useState<FormDataType>({
-    currentStep: 0, // TODO: Remettre à 0
+    currentStep: 3, // TODO: Tout remettre à 0
     name: '',
     email: '',
     phoneNumber: '',
     selectedPlan: 'Arcade',
     isYearly: false,
-    selectedAddons: [],
+    selectedAddons: ['Larger storage', 'Online service'],
     isCompleted: false,
   })
+
+  if (formData.isCompleted) {
+    console.log(formData)
+  }
 
   const setInFormData = useCallback(
     <K extends FormDataKey>(key: K, value: FormDataValueOf<K>) => {

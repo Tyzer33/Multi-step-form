@@ -4,6 +4,8 @@ import Header from './components/Header'
 import MainContent from './components/MainContent'
 import { useFormContext } from './utils/customHooks'
 
+// TODO: Implémenter navigation au clavier
+
 function App() {
   const { isCompleted } = useFormContext().formData
 

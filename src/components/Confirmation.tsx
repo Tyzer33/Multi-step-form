@@ -6,7 +6,7 @@ import { colors } from '../styles/variables'
 const Container = styled.div`
   ${flex({ direction: 'column', justify: 'center', align: 'center' })}
   text-align: center;
-  flex: 1;
+  margin-block: 2.875rem;
 `
 
 const Image = styled.img`
