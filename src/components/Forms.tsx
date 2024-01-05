@@ -11,6 +11,9 @@ import { FORMSTEPSDESCRIPTION } from '../utils/data'
 const Container = styled.div`
   ${flex({ direction: 'column' })}
   gap: 1.375rem;
+
+  flex: 1;
+  background: red;
 `
 
 const TextContainer = styled.div`

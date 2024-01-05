@@ -5,27 +5,25 @@ import proLogo from '../assets/icon-pro.svg'
 export const FORMSTEPSDESCRIPTION = [
   {
     heading: 'Personal info',
+    short: 'YOUR INFO',
     description: 'Please provide your name, email address, and phone number.',
   },
   {
     heading: 'Select your plan',
+    short: 'SELECT PLAN',
     description: 'You have the option of monthly or yearly billing.',
   },
   {
     heading: 'Pick add-ons',
+    short: 'ADD-ONS',
     description: 'Add-ons help enhance your gaming experience.',
   },
   {
     heading: 'Finishing up',
+    short: 'SUMMARY',
     description: 'Double-check everything looks OK before confirming.',
   },
-]
-
-// export const PLANS = [
-//   { name: 'Arcade', price: 9, logo: arcadeLogo },
-//   { name: 'Advanced', price: 12, logo: advancedLogo },
-//   { name: 'Pro', price: 15, logo: proLogo },
-// ] as const
+] as const
 
 export const PLANS = {
   Arcade: { name: 'Arcade', price: 9, logo: arcadeLogo },
@@ -39,7 +37,11 @@ export const ADDONS = {
     description: 'Access to multiplayer games',
     price: 1,
   },
-  'Larger storage': { name: 'Larger storage', description: 'Extra 1TB of cloud save', price: 2 },
+  'Larger storage': {
+    name: 'Larger storage',
+    description: 'Extra 1TB of cloud save',
+    price: 2,
+  },
   'Customizable profile': {
     name: 'Customizable profile',
     description: 'Custom theme on your profile',

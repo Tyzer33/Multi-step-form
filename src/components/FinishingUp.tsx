@@ -87,7 +87,9 @@ function FinishingUp() {
       <DetailedContainer>
         <PlanContainer>
           <div>
-            <PlanDetails>{`${selectedPlan} (${isYearly ? 'Yearly' : 'Monthly'})`}</PlanDetails>
+            <PlanDetails>
+              {selectedPlan} ({isYearly ? 'Yearly' : 'Monthly'})
+            </PlanDetails>
             <ChangeButton type="button" onClick={() => setInFormData('currentStep', 1)}>
               Change
             </ChangeButton>

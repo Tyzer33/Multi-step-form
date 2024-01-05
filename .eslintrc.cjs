@@ -19,5 +19,6 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'react/require-default-props': ['off', { functions: 'defaultArguments' }],
   },
 }

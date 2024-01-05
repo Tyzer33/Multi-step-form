@@ -11,22 +11,21 @@ type Props = {
 
 function FormProvider({ children }: Props) {
   const [formData, setFormData] = useState<FormDataType>({
-    currentStep: 3, // TODO: Tout remettre à 0
+    currentStep: 0, // TODO: Tout remettre à 0
     name: '',
     email: '',
     phoneNumber: '',
     selectedPlan: 'Arcade',
     isYearly: false,
-    selectedAddons: ['Larger storage', 'Online service'],
+    selectedAddons: [],
     isCompleted: false,
   })
 
   /* Send data to server
 
   useEffect(() => {
-    if (formData.isCompleted) {
-      fetch()
-    }
+    if (!formData.isCompleted) return
+    fetch()
   }, [formData.isCompleted])
 
   ------------ */

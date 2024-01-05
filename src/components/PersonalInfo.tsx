@@ -31,6 +31,11 @@ const Input = styled.input`
   &::placeholder {
     color: ${colors.placeholder};
   }
+
+  /* Error */
+  &:not() {
+    border-color: ${colors.error};
+  }
 `
 
 function PersonalInfo() {
@@ -46,6 +51,8 @@ function PersonalInfo() {
           onChange={(e) => setName(e.target.value)}
           value={name}
           placeholder="e.g. Stephen King"
+          spellCheck="false"
+          required
         />
       </Label>
       <Label htmlFor="email">
@@ -55,6 +62,8 @@ function PersonalInfo() {
           onChange={(e) => setEmail(e.target.value)}
           value={email}
           placeholder="e.g. stephenking@lorem.com"
+          spellCheck="false"
+          required
         />
       </Label>
       <Label htmlFor="phone">
@@ -64,6 +73,8 @@ function PersonalInfo() {
           onChange={(e) => setPhoneNumber(e.target.value)}
           value={phoneNumber}
           placeholder="e.g. +1 234 567 890"
+          spellCheck="false"
+          required
         />
       </Label>
     </Form>

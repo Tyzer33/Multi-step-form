@@ -7,21 +7,24 @@ export const colors = {
   elementBg: 'hsl(0, 0%, 100%)',
   primaryInteractive: 'hsl(213, 96%, 18%)',
   secondaryInteractive: 'hsl(243, 100%, 62%)',
+  fallbackBackground: 'hsl(243, 100%, 62%)',
   highlightText: 'hsl(243, 100%, 62%)',
   placeholder: 'hsl(231, 11%, 63%)',
   border: 'hsl(229, 24%, 87%)',
   innerElBg: 'hsl(231, 100%, 99%)',
+  error: 'hsl(354, 84%, 57%)',
 
   // - Marine blue: hsl(213, 96%, 18%)
   // - Purplish blue: hsl(243, 100%, 62%)
-  // - Pastel blue: hsl(228, 100%, 84%)
-  // - Light blue: hsl(206, 94%, 87%)
   // - Strawberry red: hsl(354, 84%, 57%)
-  // - Cool gray: hsl(231, 11%, 63%)
-  // - Light gray: hsl(229, 24%, 87%)
-  // - Magnolia: hsl(217, 100%, 97%)
-  // - Alabaster: hsl(231, 100%, 99%)
   // - White: hsl(0, 0%, 100%)
+  // - Alabaster: hsl(231, 100%, 99%)
+  // - Magnolia: hsl(217, 100%, 97%)
+  // - Light blue: hsl(206, 94%, 87%)
+  // - Light gray: hsl(229, 24%, 87%)
+  // - Cool gray: hsl(231, 11%, 63%)
+
+  // - Pastel blue: hsl(228, 100%, 84%)
 }
 
 const breakpoints = {
@@ -35,4 +38,5 @@ export const mediaQueries = {
   tabletPortraitUp: `(min-width: ${breakpoints.tablet / 16}rem)`,
   tabletLandscapeUp: `(min-width: ${breakpoints.tabletLandscape / 16}rem)`,
   desktopUp: `(min-width: ${breakpoints.desktop / 16}rem)`,
+  temp: `(min-width: 0rem)`, // temp
 }

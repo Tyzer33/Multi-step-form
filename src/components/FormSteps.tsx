@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { colors } from '../styles/variables'
+import { colors, mediaQueries } from '../styles/variables'
 import { flex } from '../styles/mixins'
 import { useFormContext } from '../utils/customHooks'
 import { FORMSTEPSDESCRIPTION } from '../utils/data'
@@ -7,9 +7,19 @@ import { FORMSTEPSDESCRIPTION } from '../utils/data'
 const Container = styled.div`
   display: flex;
   gap: 1rem;
+
+  @media ${mediaQueries.temp} {
+    flex-direction: column;
+    gap: 2rem;
+  }
 `
 
-const Step = styled.div<{ $active?: boolean }>`
+const Step = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
+const StepIndicator = styled.div<{ $active?: boolean }>`
   ${flex({ justify: 'center', align: 'center' })}
   color: ${colors.tertiaryClr};
   border: 1px solid ${colors.tertiaryClr};
@@ -30,15 +40,45 @@ const Step = styled.div<{ $active?: boolean }>`
     `}
 `
 
-function FormSteps() {
+const Text = styled.div`
+  ${flex({ direction: 'column', justify: 'space-between' })}
+`
+
+const StepNumber = styled.p`
+  font-size: 0.8125rem;
+`
+
+const StepName = styled.h3`
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: ${colors.tertiaryClr};
+  letter-spacing: 0.1em;
+`
+
+type Props = {
+  alternative?: boolean
+}
+
+function FormSteps({ alternative = false }: Props) {
   const { currentStep } = useFormContext().formData
+
   return (
     <Container>
-      {FORMSTEPSDESCRIPTION.map(({ heading }, index) => (
-        <Step key={heading} $active={currentStep === index}>
-          {index + 1}
-        </Step>
-      ))}
+      {FORMSTEPSDESCRIPTION.map(({ heading, short }, index) =>
+        alternative ? (
+          <Step key={heading}>
+            <StepIndicator $active={currentStep === index}>{index + 1}</StepIndicator>
+            <Text>
+              <StepNumber>STEP {index + 1}</StepNumber>
+              <StepName>{short}</StepName>
+            </Text>
+          </Step>
+        ) : (
+          <StepIndicator key={heading} $active={currentStep === index}>
+            {index + 1}
+          </StepIndicator>
+        ),
+      )}
     </Container>
   )
 }

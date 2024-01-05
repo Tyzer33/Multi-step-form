@@ -2,19 +2,22 @@ import GlobalStyles from './styles/GlobalStyles'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import MainContent from './components/MainContent'
-import { useFormContext } from './utils/customHooks'
+import { useFormContext, useMediaQuery } from './utils/customHooks'
+import { mediaQueries } from './styles/variables'
 
 // TODO: Implémenter navigation au clavier
+// TODO: Remplacer tout le media query 'temp' par celui choisit
 
 function App() {
   const { isCompleted } = useFormContext().formData
+  const isTemp = useMediaQuery(mediaQueries.temp) // temp
 
   return (
     <>
       <GlobalStyles />
-      <Header />
+      {!isTemp && <Header />}
       <MainContent />
-      {!isCompleted && <Footer />}
+      {!isTemp && !isCompleted && <Footer />}
     </>
   )
 

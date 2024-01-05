@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { colors } from './variables'
+import { colors, mediaQueries } from './variables'
 import backgroundImage from '../assets/bg-sidebar-mobile.svg'
 import { flex } from './mixins'
 
@@ -50,11 +50,19 @@ const GlobalStyles = createGlobalStyle`
   // Styles
 
   body {
-    background: top / 100% auto no-repeat ${colors.background} url(${backgroundImage});
+    background: top  / 100% auto no-repeat ${colors.background} url(${backgroundImage});
+
+    @media ${mediaQueries.temp} {
+      background-image: none;
+    }
   }
 
   div#root {
     ${flex({ direction: 'column', align: 'center' })};
+
+    @media ${mediaQueries.temp} {
+      justify-content: center;
+    }
   }
 `
 
