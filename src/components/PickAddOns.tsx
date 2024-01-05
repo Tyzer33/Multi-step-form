@@ -23,6 +23,11 @@ const CheckboxContainer = styled.label<{ $selected: boolean }>`
   cursor: pointer;
   user-select: none;
 
+  &:hover,
+  &:focus {
+    border: 1px solid ${colors.secondaryInteractive};
+  }
+
   ${({ $selected }) =>
     $selected &&
     css`

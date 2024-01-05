@@ -36,6 +36,10 @@ const GlobalStyles = createGlobalStyle`
     background: transparent;
     color: inherit;
     cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   // Fonts

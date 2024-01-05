@@ -4,6 +4,7 @@ import PlanSelection from './PlanSelection'
 import { useFormContext } from '../utils/customHooks'
 import { colors, mediaQueries } from '../styles/variables'
 
+// TODO: Spliter le code en composants plus petits
 const Container = styled.form`
   ${flex({ direction: 'column' })}
   gap: 1.5rem;
@@ -41,7 +42,7 @@ const SwitchButton = styled.label<{ $checked: boolean }>`
   }
 `
 
-const SwitchText = styled.span<{ $selected: boolean }>`
+const SwitchText = styled.button<{ $selected: boolean }>`
   font-size: 0.875rem;
   font-weight: 700;
   color: ${({ $selected }) => ($selected ? colors.secondaryClr : colors.text)};
@@ -60,7 +61,13 @@ function SelectPlan() {
     <Container>
       <PlanSelection />
       <SwitchContainer>
-        <SwitchText $selected={!isYearly}>Monthly</SwitchText>
+        <SwitchText
+          type="button"
+          onClick={() => setInFormData('isYearly', false)}
+          $selected={!isYearly}
+        >
+          Monthly
+        </SwitchText>
         <SwitchButton htmlFor="switch" $checked={isYearly}>
           <Checkbox
             id="switch"
@@ -70,7 +77,13 @@ function SelectPlan() {
             aria-label="Switch between Monthly to yearly plan"
           />
         </SwitchButton>
-        <SwitchText $selected={isYearly}>Yearly</SwitchText>
+        <SwitchText
+          type="button"
+          onClick={() => setInFormData('isYearly', true)}
+          $selected={isYearly}
+        >
+          Yearly
+        </SwitchText>
       </SwitchContainer>
     </Container>
   )

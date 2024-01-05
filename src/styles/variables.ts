@@ -1,3 +1,4 @@
+// TODO: Refactoriser les couleurs
 export const colors = {
   text: 'hsl(231, 11%, 63%)',
   background: 'hsl(217, 100%, 97%)',

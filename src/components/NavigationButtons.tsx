@@ -4,6 +4,7 @@ import { flex } from '../styles/mixins'
 import { colors, mediaQueries } from '../styles/variables'
 import { useFormContext } from '../utils/customHooks'
 
+// TODO: Essayer de changer dynamiquement la balise utiliser en fonction d'un prop
 const Container = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}
   font-weight: 500;
@@ -14,6 +15,13 @@ const Container = styled.div`
   }
 `
 
+const Back = styled.button`
+  &:hover,
+  &:focus {
+    color: ${colors.primaryInteractive};
+  }
+`
+
 const Next = styled.button`
   background: ${colors.primaryInteractive};
   color: ${colors.tertiaryClr};
@@ -21,6 +29,11 @@ const Next = styled.button`
   border-radius: 0.25rem;
 
   margin-left: auto; // Keep "Next Step" on the right when "Go Back" is not displayed
+
+  &:hover,
+  &:focus {
+    box-shadow: inset 100vmax 100vmax hsl(0, 100%, 100%, 0.15);
+  }
 
   @media ${mediaQueries.temp} {
     padding: 1rem 1.5rem;
@@ -39,9 +52,9 @@ function NavigationButtons() {
   return (
     <Container>
       {currentStep > 0 && (
-        <button type="button" onClick={setPrevStep}>
+        <Back type="button" onClick={setPrevStep}>
           Go Back
-        </button>
+        </Back>
       )}
       {currentStep === 3 ? (
         <Confirm type="button" onClick={() => setInFormData('isCompleted', true)}>

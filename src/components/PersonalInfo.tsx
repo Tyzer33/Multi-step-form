@@ -32,6 +32,11 @@ const Input = styled.input`
     color: ${colors.placeholder};
   }
 
+  &:focus {
+    outline: none;
+    border-color: ${colors.secondaryInteractive};
+  }
+
   /* Error */
   &:not() {
     border-color: ${colors.error};

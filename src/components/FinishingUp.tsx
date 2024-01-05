@@ -43,6 +43,11 @@ const ChangeButton = styled.button`
   cursor: pointer;
   margin-top: 0.125rem;
   text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: ${colors.secondaryInteractive};
+  }
 `
 
 const PlanPrice = styled.p`
