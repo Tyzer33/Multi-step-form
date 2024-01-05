@@ -23,7 +23,7 @@ const SwitchContainer = styled.div`
 `
 
 // TODO: ajouter Animation
-const SwitchButton = styled.label<{ $checked: boolean }>`
+const SwitchBtn = styled.label<{ $checked: boolean }>`
   height: 1.25rem;
   width: 2.375rem;
   background: ${colors.primaryInteractive};
@@ -41,8 +41,8 @@ const SwitchButton = styled.label<{ $checked: boolean }>`
     border-radius: 50%;
   }
 `
-
-const SwitchText = styled.button<{ $selected: boolean }>`
+// TODO: Ajouter du padding pour rendre la zone cliquable plus grande
+const SwitchTextBtn = styled.button<{ $selected: boolean }>`
   font-size: 0.875rem;
   font-weight: 700;
   color: ${({ $selected }) => ($selected ? colors.secondaryClr : colors.text)};
@@ -61,14 +61,14 @@ function SelectPlan() {
     <Container>
       <PlanSelection />
       <SwitchContainer>
-        <SwitchText
+        <SwitchTextBtn
           type="button"
           onClick={() => setInFormData('isYearly', false)}
           $selected={!isYearly}
         >
           Monthly
-        </SwitchText>
-        <SwitchButton htmlFor="switch" $checked={isYearly}>
+        </SwitchTextBtn>
+        <SwitchBtn htmlFor="switch" $checked={isYearly}>
           <Checkbox
             id="switch"
             type="checkbox"
@@ -76,14 +76,14 @@ function SelectPlan() {
             onChange={(e) => setInFormData('isYearly', e.target.checked)}
             aria-label="Switch between Monthly to yearly plan"
           />
-        </SwitchButton>
-        <SwitchText
+        </SwitchBtn>
+        <SwitchTextBtn
           type="button"
           onClick={() => setInFormData('isYearly', true)}
           $selected={isYearly}
         >
           Yearly
-        </SwitchText>
+        </SwitchTextBtn>
       </SwitchContainer>
     </Container>
   )

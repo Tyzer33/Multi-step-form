@@ -28,3 +28,23 @@ export type FormContextType = {
   toggleAddon: (addon: AddonsNames) => void
   calculTotal: () => number
 }
+
+type FlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse' | null
+type JustifyContent =
+  | 'center'
+  | 'flex-start'
+  | 'flex-end'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | null
+type AlignItems = 'center' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline' | null
+
+export type FlexMixin = {
+  direction?: FlexDirection
+  justify?: JustifyContent
+  align?: AlignItems
+}
+
+type CssUnit = 'px' | 'rem' | 'em' | 'vh' | 'vw' | 'vmin' | 'vmax' | '%'
+export type CssMeasure = `${number}${CssUnit}`

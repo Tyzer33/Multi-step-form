@@ -4,7 +4,6 @@ import { flex } from '../styles/mixins'
 import { colors, mediaQueries } from '../styles/variables'
 import { useFormContext } from '../utils/customHooks'
 
-// TODO: Essayer de changer dynamiquement la balise utiliser en fonction d'un prop
 const Container = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}
   font-weight: 500;

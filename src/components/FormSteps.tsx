@@ -4,6 +4,7 @@ import { flex } from '../styles/mixins'
 import { useFormContext } from '../utils/customHooks'
 import { FORMSTEPSDESCRIPTION } from '../utils/data'
 
+// TODO: Essayer de changer dynamiquement la balise utiliser en fonction d'un prop
 const Container = styled.div`
   display: flex;
   gap: 1rem;
