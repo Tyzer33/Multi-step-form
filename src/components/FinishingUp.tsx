@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useFormContext } from '../utils/customHooks'
 import { ADDONS, PLANS } from '../utils/data'
-import { colors } from '../styles/variables'
+import { colors, mediaQueries } from '../styles/variables'
 import { flex } from '../styles/mixins'
 
 const Wrapper = styled.div`
@@ -15,6 +15,12 @@ const DetailedContainer = styled.div`
   padding: 1rem;
   background: ${colors.innerElBg};
   border-radius: 0.5rem;
+
+  @media ${mediaQueries.temp} {
+    padding: 1.5rem;
+    padding-top: 1.25rem;
+    gap: 1.25rem;
+  }
 `
 
 const PlanContainer = styled.div`
@@ -23,8 +29,12 @@ const PlanContainer = styled.div`
 
 const PlanDetails = styled.h2`
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   color: ${colors.secondaryClr};
+
+  @media ${mediaQueries.temp} {
+    font-size: 1rem;
+  }
 `
 
 const ChangeButton = styled.button`
@@ -37,14 +47,22 @@ const ChangeButton = styled.button`
 
 const PlanPrice = styled.p`
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   color: ${colors.secondaryClr};
+
+  @media ${mediaQueries.temp} {
+    font-size: 1rem;
+  }
 `
 
 const Line = styled.hr`
   border: none;
   height: 1px;
   background: ${colors.border};
+
+  @media ${mediaQueries.temp} {
+    margin-top: 0.25rem;
+  }
 `
 
 const AddonContainer = styled.div`
@@ -62,6 +80,11 @@ const AddonPrice = styled.p`
 
 const TotalContainer = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}
+  padding: 1rem;
+
+  @media ${mediaQueries.temp} {
+    padding: 1.5rem;
+  }
 `
 
 const TotalText = styled.p`
@@ -71,6 +94,10 @@ const TotalText = styled.p`
 const TotalPrice = styled.p`
   font-weight: 700;
   color: ${colors.highlightText};
+
+  @media ${mediaQueries.temp} {
+    font-size: 1.25rem;
+  }
 `
 
 // TODO: Plutot que *10 pour le yearly, mettre le prix annuel directement dans le fichier data.ts

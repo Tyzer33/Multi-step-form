@@ -1,19 +1,23 @@
 import styled, { css } from 'styled-components'
 import { flex } from '../styles/mixins'
-import { colors } from '../styles/variables'
+import { colors, mediaQueries } from '../styles/variables'
 import { ADDONS } from '../utils/data'
 import { useFormContext } from '../utils/customHooks'
 import checkedIcon from '../assets/icon-checkmark.svg'
 
-const Container = styled.div`
+const Container = styled.form`
   ${flex({ direction: 'column' })}
   gap: .75rem;
+
+  @media ${mediaQueries.temp} {
+    gap: 1rem;
+  }
 `
 
 const CheckboxContainer = styled.label<{ $selected: boolean }>`
   ${flex({ direction: 'row', align: 'center' })}
   border: 1px solid ${colors.border};
-  padding: 1rem 1rem 1rem 1.125rem;
+  padding: 0.875rem 1rem;
   gap: 0.875rem;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -25,6 +29,11 @@ const CheckboxContainer = styled.label<{ $selected: boolean }>`
       border: 1px solid ${colors.secondaryInteractive};
       background: ${colors.innerElBg};
     `}
+
+  @media ${mediaQueries.temp} {
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+  }
 `
 
 const StyledCheckbox = styled.div<{ $selected: boolean }>`
@@ -58,17 +67,29 @@ const InfosContainer = styled.div`
 
 const Name = styled.p`
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   color: ${colors.secondaryClr};
+
+  @media ${mediaQueries.temp} {
+    font-size: 1rem;
+  }
 `
 
 const Description = styled.p`
   font-size: 0.75rem;
+
+  @media ${mediaQueries.temp} {
+    font-size: 0.9375rem;
+  }
 `
 
 const Price = styled.p`
   font-size: 0.75rem;
   color: ${colors.secondaryInteractive};
+
+  @media ${mediaQueries.temp} {
+    font-size: 0.9375rem;
+  }
 `
 
 function PickAddOns() {

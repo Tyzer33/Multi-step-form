@@ -2,17 +2,23 @@ import styled, { css } from 'styled-components'
 import { PLANS } from '../utils/data'
 import { flex } from '../styles/mixins'
 import { useFormContext } from '../utils/customHooks'
-import { colors } from '../styles/variables'
+import { colors, mediaQueries } from '../styles/variables'
 
 const Container = styled.div`
   ${flex({ direction: 'column' })}
   gap: .75rem;
+
+  @media ${mediaQueries.temp} {
+    flex-direction: row;
+    gap: 1.125rem;
+  }
 `
 
 const RadioContainer = styled.label<{ $selected: boolean }>`
   ${flex({ direction: 'row', align: 'flex-start' })}
   border: 1px solid ${colors.border};
-  padding: 1rem 1rem 1rem 1.125rem;
+  padding: 1rem;
+  padding-left: 1.125rem;
   gap: 0.875rem;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -24,6 +30,13 @@ const RadioContainer = styled.label<{ $selected: boolean }>`
       border: 1px solid ${colors.secondaryInteractive};
       background: ${colors.innerElBg};
     `}
+
+  @media ${mediaQueries.temp} {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 10rem;
+    flex: 1;
+  }
 `
 
 const RadioButton = styled.input`
@@ -53,7 +66,6 @@ const Price = styled.p`
 const Saving = styled.p`
   font-size: 0.75rem;
   color: ${colors.secondaryClr};
-  letter-spacing: -0.05em;
   margin-top: 0.125rem;
 `
 

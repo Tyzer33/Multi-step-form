@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import thankYouIcon from '../assets/icon-thank-you.svg'
 import { flex } from '../styles/mixins'
-import { colors } from '../styles/variables'
+import { colors, mediaQueries } from '../styles/variables'
 
 const Container = styled.div`
   ${flex({ direction: 'column', justify: 'center', align: 'center' })}
@@ -11,6 +11,10 @@ const Container = styled.div`
 
 const Image = styled.img`
   height: 3.5rem;
+
+  @media ${mediaQueries.temp} {
+    height: 5rem;
+  }
 `
 
 const Heading = styled.h1`
@@ -18,6 +22,11 @@ const Heading = styled.h1`
   font-weight: 700;
   color: ${colors.secondaryClr};
   margin-block: 1.5rem 0.625rem;
+
+  @media ${mediaQueries.temp} {
+    font-size: 2.5rem;
+    margin-block: 2rem 1rem;
+  }
 `
 
 const BodyText = styled.p`

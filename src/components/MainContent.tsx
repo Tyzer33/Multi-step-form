@@ -25,9 +25,12 @@ const Container = styled.div`
 
   @media ${mediaQueries.temp} {
     display: flex;
-    padding: 1rem 6.25rem 1rem 1rem;
+    padding: 1rem;
+    padding-right: 6.25rem;
     max-width: 58.75rem;
     gap: 6.25rem;
+
+    margin: 2rem; //temp
   }
 `
 
@@ -37,6 +40,13 @@ const Sidebar = styled.aside`
   width: 17.125rem;
   border-radius: 0.625rem;
   padding: 2.5rem 2rem;
+`
+
+// TODO: Trouver un nom plus explicite
+const Temp = styled.div`
+  ${flex({ direction: 'column', justify: 'center' })}
+  flex: 1;
+  margin-block: 2.5rem 1rem;
 `
 
 function MainContent() {
@@ -49,10 +59,10 @@ function MainContent() {
         <Sidebar>
           <FormSteps alternative />
         </Sidebar>
-        <div>
+        <Temp>
           {!isCompleted ? <Forms /> : <Confirmation />}
           {!isCompleted && <NavigationButtons />}
-        </div>
+        </Temp>
       </Container>
     )
   }

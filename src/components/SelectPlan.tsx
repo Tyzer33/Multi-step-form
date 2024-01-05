@@ -2,11 +2,15 @@ import styled from 'styled-components'
 import { flex } from '../styles/mixins'
 import PlanSelection from './PlanSelection'
 import { useFormContext } from '../utils/customHooks'
-import { colors } from '../styles/variables'
+import { colors, mediaQueries } from '../styles/variables'
 
 const Container = styled.form`
   ${flex({ direction: 'column' })}
   gap: 1.5rem;
+
+  @media ${mediaQueries.temp} {
+    gap: 2rem;
+  }
 `
 
 const SwitchContainer = styled.div`
@@ -14,7 +18,7 @@ const SwitchContainer = styled.div`
   gap: 1.5rem;
   background: ${colors.innerElBg};
   border-radius: 0.625rem;
-  padding-block: 1rem;
+  height: 3rem;
 `
 
 // TODO: ajouter Animation
@@ -47,6 +51,7 @@ const Checkbox = styled.input`
   display: none;
 `
 
+// TODO: Rendre SwitchText cliquable
 function SelectPlan() {
   const { formData, setInFormData } = useFormContext()
   const { isYearly } = formData

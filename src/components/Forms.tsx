@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useFormContext } from '../utils/customHooks'
-import { colors } from '../styles/variables'
+import { colors, mediaQueries } from '../styles/variables'
 import { flex } from '../styles/mixins'
 import PersonalInfo from './PersonalInfo'
 import SelectPlan from './SelectPlan'
@@ -11,9 +11,11 @@ import { FORMSTEPSDESCRIPTION } from '../utils/data'
 const Container = styled.div`
   ${flex({ direction: 'column' })}
   gap: 1.375rem;
-
   flex: 1;
-  background: red;
+
+  @media ${mediaQueries.temp} {
+    gap: 2.25rem;
+  }
 `
 
 const TextContainer = styled.div`
@@ -21,14 +23,18 @@ const TextContainer = styled.div`
   gap: .625rem;
 `
 
-const Description = styled.div`
-  line-height: 1.5625em;
-`
-
 const Heading = styled.h1`
   font-size: 1.5rem;
   font-weight: 700;
   color: ${colors.secondaryClr};
+
+  @media ${mediaQueries.temp} {
+    font-size: 2rem;
+  }
+`
+
+const Description = styled.div`
+  line-height: 1.5625em;
 `
 
 function Forms() {

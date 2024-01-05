@@ -1,13 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from 'styled-components'
 import { flex } from '../styles/mixins'
-import { colors } from '../styles/variables'
+import { colors, mediaQueries } from '../styles/variables'
 import { useFormContext } from '../utils/customHooks'
 
 const Container = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}
-  font-weight: 700;
+  font-weight: 500;
   font-size: 0.875rem;
+
+  @media ${mediaQueries.temp} {
+    font-size: 1rem;
+  }
 `
 
 const Next = styled.button`
@@ -17,6 +21,11 @@ const Next = styled.button`
   border-radius: 0.25rem;
 
   margin-left: auto; // Keep "Next Step" on the right when "Go Back" is not displayed
+
+  @media ${mediaQueries.temp} {
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+  }
 `
 
 const Confirm = styled(Next)`
