@@ -26,25 +26,55 @@ export const FORMSTEPSDESCRIPTION = [
 ] as const
 
 export const PLANS = {
-  Arcade: { name: 'Arcade', price: 9, logo: arcadeLogo },
-  Advanced: { name: 'Advanced', price: 12, logo: advancedLogo },
-  Pro: { name: 'Pro', price: 15, logo: proLogo },
+  Arcade: {
+    name: 'Arcade',
+    price: {
+      monthly: 9,
+      yearly: 90,
+    },
+    logo: arcadeLogo,
+  },
+  Advanced: {
+    name: 'Advanced',
+    price: {
+      monthly: 12,
+      yearly: 120,
+    },
+    logo: advancedLogo,
+  },
+  Pro: {
+    name: 'Pro',
+    price: {
+      monthly: 15,
+      yearly: 150,
+    },
+    logo: proLogo,
+  },
 } as const
 
 export const ADDONS = {
   'Online service': {
     name: 'Online service',
     description: 'Access to multiplayer games',
-    price: 1,
+    price: {
+      monthly: 1,
+      yearly: 10,
+    },
   },
   'Larger storage': {
     name: 'Larger storage',
     description: 'Extra 1TB of cloud save',
-    price: 2,
+    price: {
+      monthly: 2,
+      yearly: 20,
+    },
   },
   'Customizable profile': {
     name: 'Customizable profile',
     description: 'Custom theme on your profile',
-    price: 2,
+    price: {
+      monthly: 2,
+      yearly: 20,
+    },
   },
 } as const

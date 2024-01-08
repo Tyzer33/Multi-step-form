@@ -119,7 +119,7 @@ function PickAddOns() {
             <Name>{name}</Name>
             <Description>{description}</Description>
           </InfosContainer>
-          <Price>{isYearly ? `+$${price * 10}/yr` : `+$${price}/mo`}</Price>
+          <Price>{isYearly ? `+$${price.yearly}/yr` : `+$${price.monthly}/mo`}</Price>
         </CheckboxContainer>
       ))}
     </Container>

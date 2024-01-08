@@ -93,7 +93,7 @@ function PlanSelection() {
           <Logo src={logo} alt={`${name}'s logo`} />
           <TextContainer>
             <Name>{name}</Name>
-            <Price>{isYearly ? `$${price * 10}/yr` : `$${price}/mo`}</Price>
+            <Price>{isYearly ? `$${price.yearly}/yr` : `$${price.monthly}/mo`}</Price>
             {isYearly && <Saving>2 months free</Saving>}
           </TextContainer>
         </RadioContainer>

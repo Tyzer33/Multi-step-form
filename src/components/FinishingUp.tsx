@@ -105,8 +105,6 @@ const TotalPrice = styled.p`
   }
 `
 
-// TODO: Plutot que *10 pour le yearly, mettre le prix annuel directement dans le fichier data.ts
-
 function FinishingUp() {
   const { formData, calculTotal, setInFormData } = useFormContext()
   const { selectedPlan, isYearly, selectedAddons } = formData
@@ -127,7 +125,7 @@ function FinishingUp() {
             </ChangeButton>
           </div>
           <PlanPrice>
-            {isYearly ? `$${selectedPlanPrice * 10}/yr` : `$${selectedPlanPrice}/mo`}
+            {isYearly ? `$${selectedPlanPrice.yearly}/yr` : `$${selectedPlanPrice.monthly}/mo`}
           </PlanPrice>
         </PlanContainer>
         {selectedAddons.length > 0 && <Line />}
@@ -136,8 +134,8 @@ function FinishingUp() {
             <AddonName>{selectedAddon}</AddonName>
             <AddonPrice>
               {isYearly
-                ? `+$${ADDONS[selectedAddon].price * 10}/yr`
-                : `+$${ADDONS[selectedAddon].price}/mo`}
+                ? `+$${ADDONS[selectedAddon].price.yearly}/yr`
+                : `+$${ADDONS[selectedAddon].price.monthly}/mo`}
             </AddonPrice>
           </AddonContainer>
         ))}

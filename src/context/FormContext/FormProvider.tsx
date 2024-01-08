@@ -79,14 +79,14 @@ function FormProvider({ children }: Props) {
 
   const calculTotal = useCallback(() => {
     const { selectedPlan, selectedAddons, isYearly } = formData
-    const selectedPlanPrice = PLANS[selectedPlan].price
+    const billingFrequency = isYearly ? 'yearly' : 'monthly'
+    const selectedPlanPrice = PLANS[selectedPlan].price[billingFrequency]
     const addonsTotalPrice = selectedAddons.reduce(
-      (acc, selectedAddon) => acc + ADDONS[selectedAddon].price,
+      (acc, selectedAddon) => acc + ADDONS[selectedAddon].price[billingFrequency],
       0,
     )
 
-    const monthlyTotal = selectedPlanPrice + addonsTotalPrice
-    return isYearly ? monthlyTotal * 10 : monthlyTotal
+    return selectedPlanPrice + addonsTotalPrice
   }, [formData])
 
   const value = useMemo(
