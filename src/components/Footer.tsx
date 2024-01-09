@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import NavigationButtons from './NavigationButtons'
 import { colors } from '../styles/variables'
 
-// TODO: Peut-être rendre le footer fixed
+// TODO: Peut-être rendre le footer fixed sur mobile
 
 const Container = styled.footer`
   width: 100%;

@@ -23,8 +23,7 @@ const CheckboxContainer = styled.label<{ $selected: boolean }>`
   cursor: pointer;
   user-select: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     border: 1px solid ${colors.secondaryInteractive};
   }
 
@@ -38,6 +37,13 @@ const CheckboxContainer = styled.label<{ $selected: boolean }>`
   @media ${mediaQueries.temp} {
     gap: 1.5rem;
     padding: 1.25rem 1.5rem;
+  }
+
+  @supports selector(:has(:focus-visible)) {
+    &:has(:focus-visible) {
+      border: 1px solid ${colors.secondaryInteractive};
+      scale: 0.975;
+    }
   }
 `
 
@@ -61,7 +67,9 @@ const StyledCheckbox = styled.div<{ $selected: boolean }>`
 `
 
 const Checkbox = styled.input`
-  display: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 `
 
 const InfosContainer = styled.div`
@@ -104,7 +112,7 @@ function PickAddOns() {
 
   return (
     <Container>
-      {ADDONSARR.map(({ name, description, price }) => (
+      {ADDONSARR.map(({ name, description, price }, index) => (
         <CheckboxContainer htmlFor={name} key={name} $selected={selectedAddons.includes(name)}>
           <StyledCheckbox $selected={selectedAddons.includes(name)}>
             <Checkbox
@@ -113,6 +121,7 @@ function PickAddOns() {
               id={name}
               checked={selectedAddons.includes(name)}
               onChange={() => toggleAddon(name)}
+              autoFocus={index === 0}
             />
           </StyledCheckbox>
           <InfosContainer>

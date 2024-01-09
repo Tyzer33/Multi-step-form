@@ -118,21 +118,3 @@ function FormProvider({ children }: Props) {
 }
 
 export default FormProvider
-
-// TODO: Supprimer les fonctions inutiles
-
-// const setCurrentStep = useCallback((step: number) => {
-//   setFormData((prev) => ({ ...prev, currentStep: step }))
-// }, [])
-
-// const setSelectedPlan = useCallback((selectedPlan: Plan) => {
-//   setFormData((prev) => ({ ...prev, selectedPlan }))
-// }, [])
-
-// const setIsYearly = useCallback((isYearly: boolean) => {
-//   setFormData((prev) => ({ ...prev, isYearly }))
-// }, [])
-
-// const confirm = useCallback(() => {
-//   setFormData((prev) => ({ ...prev, isCompleted: true }))
-// }, [])

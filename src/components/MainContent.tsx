@@ -6,7 +6,6 @@ import Forms from './Forms'
 import { flex } from '../styles/mixins'
 import FormSteps from './FormSteps'
 import NavigationButtons from './NavigationButtons'
-import asideBackground from '../assets/bg-sidebar-desktop.svg'
 
 const Wrapper = styled.main`
   flex: 1;
@@ -34,16 +33,8 @@ const Container = styled.div`
   }
 `
 
-const Sidebar = styled.aside`
-  background: center / cover no-repeat ${colors.fallbackBackground} url(${asideBackground});
-  height: 35.5rem;
-  width: 17.125rem;
-  border-radius: 0.625rem;
-  padding: 2.5rem 2rem;
-`
-
 // TODO: Trouver un nom plus explicite
-const Temp = styled.div`
+const MainForm = styled.div`
   ${flex({ direction: 'column', justify: 'center' })}
   flex: 1;
   margin-block: 2.5rem 1rem;
@@ -56,13 +47,11 @@ function MainContent() {
   if (isTemp) {
     return (
       <Container>
-        <Sidebar>
-          <FormSteps alternative />
-        </Sidebar>
-        <Temp>
+        <FormSteps type="aside" />
+        <MainForm>
           {!isCompleted ? <Forms /> : <Confirmation />}
           {!isCompleted && <NavigationButtons />}
-        </Temp>
+        </MainForm>
       </Container>
     )
   }

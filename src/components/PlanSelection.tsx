@@ -24,8 +24,7 @@ const RadioContainer = styled.label<{ $selected: boolean }>`
   cursor: pointer;
   user-select: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     border: 1px solid ${colors.secondaryInteractive};
   }
 
@@ -42,10 +41,19 @@ const RadioContainer = styled.label<{ $selected: boolean }>`
     height: 10rem;
     flex: 1;
   }
+
+  @supports selector(:has(:focus-visible)) {
+    &:has(:focus-visible) {
+      outline: 0.1875rem solid ${colors.secondaryInteractive};
+      outline-offset: 0.125rem;
+    }
+  }
 `
 
 const RadioButton = styled.input`
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
 `
 
 const Logo = styled.img`
@@ -81,7 +89,7 @@ function PlanSelection() {
 
   return (
     <Container>
-      {PLANSARR.map(({ name, price, logo }) => (
+      {PLANSARR.map(({ name, price, logo }, index) => (
         <RadioContainer htmlFor={name} key={name} $selected={name === selectedPlan}>
           <RadioButton
             type="radio"
@@ -89,6 +97,7 @@ function PlanSelection() {
             id={name}
             checked={name === selectedPlan}
             onChange={(e) => e.target.checked && setInFormData('selectedPlan', name)}
+            autoFocus={index === 0}
           />
           <Logo src={logo} alt={`${name}'s logo`} />
           <TextContainer>

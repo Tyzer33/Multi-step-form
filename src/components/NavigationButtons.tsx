@@ -16,7 +16,7 @@ const Container = styled.div`
 
 const Back = styled.button`
   &:hover,
-  &:focus {
+  &:focus-visible {
     color: ${colors.primaryInteractive};
   }
 `
@@ -30,8 +30,13 @@ const Next = styled.button`
   margin-left: auto; // Keep "Next Step" on the right when "Go Back" is not displayed
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     box-shadow: inset 100vmax 100vmax hsl(0, 100%, 100%, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 0.125rem solid ${colors.primaryInteractive};
+    outline-offset: 0.125rem;
   }
 
   @media ${mediaQueries.temp} {
@@ -42,6 +47,10 @@ const Next = styled.button`
 
 const Confirm = styled(Next)`
   background: ${colors.secondaryInteractive};
+
+  &:focus-visible {
+    outline-color: ${colors.secondaryInteractive};
+  }
 `
 
 function NavigationButtons() {
@@ -56,7 +65,7 @@ function NavigationButtons() {
         </Back>
       )}
       {currentStep === 3 ? (
-        <Confirm type="button" onClick={() => setInFormData('isCompleted', true)}>
+        <Confirm type="button" onClick={() => setInFormData('isCompleted', true)} autoFocus>
           Confirm
         </Confirm>
       ) : (

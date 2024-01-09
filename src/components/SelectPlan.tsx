@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-import { flex } from '../styles/mixins'
+import { expandClickArea, flex } from '../styles/mixins'
 import PlanSelection from './PlanSelection'
 import { useFormContext } from '../utils/customHooks'
 import { colors, mediaQueries } from '../styles/variables'
 
-// TODO: Spliter le code en composants plus petits
 const Container = styled.form`
   ${flex({ direction: 'column' })}
   gap: 1.5rem;
@@ -22,7 +21,6 @@ const SwitchContainer = styled.div`
   height: 3rem;
 `
 
-// TODO: ajouter Animation
 const SwitchBtn = styled.label<{ $checked: boolean }>`
   height: 1.25rem;
   width: 2.375rem;
@@ -30,7 +28,7 @@ const SwitchBtn = styled.label<{ $checked: boolean }>`
   ${flex({ align: 'center' })}
   justify-content: ${({ $checked }) => ($checked ? 'flex-end' : 'flex-start')};
   padding: 0.25rem;
-  border-radius: 1.25rem;
+  border-radius: 0.625rem;
   cursor: pointer;
 
   &::after {
@@ -40,19 +38,36 @@ const SwitchBtn = styled.label<{ $checked: boolean }>`
     background: ${colors.tertiaryClr};
     border-radius: 50%;
   }
+
+  @supports selector(:has(:focus-visible)) {
+    &:has(:focus-visible) {
+      outline: 0.125rem solid ${colors.primaryInteractive};
+      outline-offset: 0.125rem;
+    }
+  }
 `
-// TODO: Ajouter du padding pour rendre la zone cliquable plus grande
+
 const SwitchTextBtn = styled.button<{ $selected: boolean }>`
   font-size: 0.875rem;
   font-weight: 700;
   color: ${({ $selected }) => ($selected ? colors.secondaryClr : colors.text)};
+  ${expandClickArea('0.75em')}
+
+  &:hover, &:focus-visible {
+    color: ${colors.primaryInteractive};
+  }
+
+  &:focus-visible {
+    translate: 0 -0.25rem;
+  }
 `
 
 const Checkbox = styled.input`
-  display: none;
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
 `
 
-// TODO: Rendre SwitchText cliquable
 function SelectPlan() {
   const { formData, setInFormData } = useFormContext()
   const { isYearly } = formData

@@ -58,6 +58,7 @@ function PersonalInfo() {
           placeholder="e.g. Stephen King"
           spellCheck="false"
           required
+          autoFocus
         />
       </Label>
       <Label htmlFor="email">

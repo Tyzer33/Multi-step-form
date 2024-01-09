@@ -37,8 +37,6 @@ const Description = styled.div`
   line-height: 1.5625em;
 `
 
-// TODO: Régler problèmes avec la navigation clavier et les radio: display: none
-
 function Forms() {
   const { currentStep } = useFormContext().formData
   const { heading, description } = FORMSTEPSDESCRIPTION[currentStep]
