@@ -1,3 +1,4 @@
+import { CSSProperties } from 'styled-components/dist/types'
 import { ADDONS, PLANS } from './data'
 
 export type AddonsNames = keyof typeof ADDONS
@@ -29,21 +30,10 @@ export type FormContextType = {
   calculTotal: () => number
 }
 
-type FlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse' | null
-type JustifyContent =
-  | 'center'
-  | 'flex-start'
-  | 'flex-end'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | null
-type AlignItems = 'center' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline' | null
-
 export type FlexMixin = {
-  direction?: FlexDirection
-  justify?: JustifyContent
-  align?: AlignItems
+  direction?: CSSProperties['flexDirection']
+  justify?: CSSProperties['justifyContent']
+  align?: CSSProperties['alignItems']
 }
 
 type CssUnit = 'px' | 'rem' | 'em' | 'vh' | 'vw' | 'vmin' | 'vmax' | '%'

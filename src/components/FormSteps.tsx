@@ -13,7 +13,7 @@ const Container = styled.div`
   @media ${mediaQueries.temp} {
     flex-direction: column;
     gap: 2rem;
-    background: center / cover no-repeat ${colors.fallbackBackground} url(${asideBackground});
+    background: center / cover no-repeat ${colors.fallbackImgBg} url(${asideBackground});
     height: 35.5rem;
     width: 17.125rem;
     border-radius: 0.625rem;
@@ -68,12 +68,12 @@ type Props = {
 
 function FormSteps({ type }: Props) {
   const { currentStep } = useFormContext().formData
-  const isAside = type === 'aside'
 
+  // TODO: Créer un composant Step
   return (
     <Container as={type}>
       {FORMSTEPSDESCRIPTION.map(({ heading, short }, index) =>
-        isAside ? (
+        type === 'aside' ? (
           <Step key={heading}>
             <StepIndicator $active={currentStep === index}>{index + 1}</StepIndicator>
             <Text>

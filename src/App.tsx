@@ -6,7 +6,6 @@ import { useFormContext, useMediaQuery } from './utils/customHooks'
 import { mediaQueries } from './styles/variables'
 
 // TODO: Remplacer tout le media query 'temp' par celui choisit
-// TODO: ajouter Animation
 // TODO: Spliter le code en composants plus petits
 
 function App() {

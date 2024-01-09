@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { flex } from '../styles/mixins'
-import { colors, mediaQueries } from '../styles/variables'
+import { colors, mediaQueries, transition } from '../styles/variables'
 import { ADDONS } from '../utils/data'
 import { useFormContext } from '../utils/customHooks'
 import checkedIcon from '../assets/icon-checkmark.svg'
@@ -22,6 +22,7 @@ const CheckboxContainer = styled.label<{ $selected: boolean }>`
   border-radius: 0.5rem;
   cursor: pointer;
   user-select: none;
+  ${transition}
 
   &:hover {
     border: 1px solid ${colors.secondaryInteractive};

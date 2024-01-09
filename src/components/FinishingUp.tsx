@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useFormContext } from '../utils/customHooks'
 import { ADDONS, PLANS } from '../utils/data'
-import { colors, mediaQueries } from '../styles/variables'
+import { colors, mediaQueries, transition } from '../styles/variables'
 import { flex } from '../styles/mixins'
 
 const Wrapper = styled.div`
@@ -43,6 +43,7 @@ const ChangeButton = styled.button`
   cursor: pointer;
   margin-top: 0.125rem;
   text-decoration: underline;
+  ${transition}
 
   &:hover,
   &:focus {

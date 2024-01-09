@@ -1,32 +1,34 @@
+import { css } from 'styled-components'
+
 // TODO: Refactoriser les couleurs
 export const colors = {
-  text: 'hsl(231, 11%, 63%)',
   background: 'hsl(217, 100%, 97%)',
-  tertiaryClr: 'hsl(0, 0%, 100%)',
-  activeBg: 'hsl(206, 94%, 87%)',
+  innerElBg: 'hsl(231, 100%, 99%)',
+  fallbackImgBg: 'hsl(243, 100%, 62%)',
+
+  text: 'hsl(231, 11%, 63%)',
+  highlightText: 'hsl(243, 100%, 62%)',
+
   secondaryClr: 'hsl(213, 96%, 18%)',
+  tertiaryClr: 'hsl(0, 0%, 100%)',
+
+  activeBg: 'hsl(206, 94%, 87%)',
   elementBg: 'hsl(0, 0%, 100%)',
+
   primaryInteractive: 'hsl(213, 96%, 18%)',
   secondaryInteractive: 'hsl(243, 100%, 62%)',
-  fallbackBackground: 'hsl(243, 100%, 62%)',
-  highlightText: 'hsl(243, 100%, 62%)',
+
   placeholder: 'hsl(231, 11%, 63%)',
   border: 'hsl(229, 24%, 87%)',
-  innerElBg: 'hsl(231, 100%, 99%)',
-  error: 'hsl(354, 84%, 57%)',
 
-  // - Marine blue: hsl(213, 96%, 18%)
-  // - Purplish blue: hsl(243, 100%, 62%)
-  // - Strawberry red: hsl(354, 84%, 57%)
-  // - White: hsl(0, 0%, 100%)
-  // - Alabaster: hsl(231, 100%, 99%)
-  // - Magnolia: hsl(217, 100%, 97%)
-  // - Light blue: hsl(206, 94%, 87%)
-  // - Light gray: hsl(229, 24%, 87%)
-  // - Cool gray: hsl(231, 11%, 63%)
+  error: 'hsl(354, 84%, 57%)',
 
   // - Pastel blue: hsl(228, 100%, 84%)
 }
+
+export const transition = css`
+  transition: all 0.2s ease-in;
+`
 
 const breakpoints = {
   tablet: 768,

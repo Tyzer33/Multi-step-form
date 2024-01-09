@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from 'styled-components'
 import { flex } from '../styles/mixins'
-import { colors, mediaQueries } from '../styles/variables'
+import { colors, mediaQueries, transition } from '../styles/variables'
 import { useFormContext } from '../utils/customHooks'
 
 const Container = styled.div`
@@ -15,6 +15,8 @@ const Container = styled.div`
 `
 
 const Back = styled.button`
+  ${transition}
+
   &:hover,
   &:focus-visible {
     color: ${colors.primaryInteractive};
@@ -26,8 +28,8 @@ const Next = styled.button`
   color: ${colors.tertiaryClr};
   padding: 0.75rem 1rem;
   border-radius: 0.25rem;
-
   margin-left: auto; // Keep "Next Step" on the right when "Go Back" is not displayed
+  ${transition}
 
   &:hover,
   &:focus-visible {

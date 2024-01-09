@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { PLANS } from '../utils/data'
 import { flex } from '../styles/mixins'
 import { useFormContext } from '../utils/customHooks'
-import { colors, mediaQueries } from '../styles/variables'
+import { colors, mediaQueries, transition } from '../styles/variables'
 
 const Container = styled.div`
   ${flex({ direction: 'column' })}
@@ -23,6 +23,7 @@ const RadioContainer = styled.label<{ $selected: boolean }>`
   border-radius: 0.5rem;
   cursor: pointer;
   user-select: none;
+  ${transition}
 
   &:hover {
     border: 1px solid ${colors.secondaryInteractive};
