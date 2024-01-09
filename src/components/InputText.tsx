@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { flex } from '../styles/mixins'
-import { colors } from '../styles/variables'
+import { colors, mediaQueries } from '../styles/variables'
 
 const Label = styled.label`
   ${flex({ direction: 'column' })}
@@ -8,8 +8,13 @@ const Label = styled.label`
 
   /* Fonts */
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   color: ${colors.secondaryClr};
+
+  @media ${mediaQueries.temp} {
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
 `
 
 const Input = styled.input`
@@ -21,6 +26,12 @@ const Input = styled.input`
   font-size: 0.9375rem;
   font-weight: 500;
   color: ${colors.secondaryClr};
+
+  @media ${mediaQueries.temp} {
+    padding: 0.875rem 0.9375rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
 
   &::placeholder {
     color: ${colors.placeholder};

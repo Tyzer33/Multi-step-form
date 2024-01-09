@@ -86,10 +86,10 @@ const AddonPrice = styled.p`
 
 const TotalContainer = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}
-  padding: 1rem;
+  padding-inline: 1rem;
 
   @media ${mediaQueries.temp} {
-    padding: 1.5rem;
+    padding-inline: 1.5rem;
   }
 `
 

@@ -2,10 +2,15 @@ import styled from 'styled-components'
 import { flex } from '../styles/mixins'
 import { useFormContext } from '../utils/customHooks'
 import InputText from './InputText'
+import { mediaQueries } from '../styles/variables'
 
 const Container = styled.form`
   ${flex({ direction: 'column' })}
   gap: 1rem;
+
+  @media ${mediaQueries.temp} {
+    gap: 1.5rem;
+  }
 `
 
 function PersonalInfo() {
