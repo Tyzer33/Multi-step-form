@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { flex } from '../styles/mixins'
-import { colors, mediaQueries, transition } from '../styles/variables'
-import Button from './Button'
-import { useFormContext } from '../utils/customHooks'
-import { PLANS } from '../utils/data'
+import { flex } from '../../../styles/mixins'
+import { colors, mediaQueries, transition } from '../../../styles/variables'
+import Button from '../../Button'
+import { useFormContext } from '../../../utils/customHooks'
+import { PLANS } from '../../../utils/data'
 
 const Container = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}

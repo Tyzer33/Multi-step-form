@@ -1,5 +1,5 @@
 import GlobalStyles from './styles/GlobalStyles'
-import FormSteps from './components/FormSteps'
+import FormSteps from './components/FormSteps/FormSteps'
 import MainContent from './components/MainContent'
 import { useFormContext, useMediaQuery } from './utils/customHooks'
 import { mediaQueries } from './styles/variables'

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
-import { useFormContext } from '../utils/customHooks'
-import { flex } from '../styles/mixins'
-import { colors, mediaQueries, transition } from '../styles/variables'
-import { Plan } from '../utils/types'
+import { useFormContext } from '../../../utils/customHooks'
+import { flex } from '../../../styles/mixins'
+import { colors, mediaQueries, transition } from '../../../styles/variables'
+import { Plan } from '../../../utils/types'
 
 const Container = styled.label<{ $selected: boolean }>`
   ${flex({ direction: 'row', align: 'flex-start' })}

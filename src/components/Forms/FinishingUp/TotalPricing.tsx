@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { flex } from '../styles/mixins'
-import { colors, mediaQueries } from '../styles/variables'
-import { useFormContext } from '../utils/customHooks'
+import { flex } from '../../../styles/mixins'
+import { colors, mediaQueries } from '../../../styles/variables'
+import { useFormContext } from '../../../utils/customHooks'
 
 const Container = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}

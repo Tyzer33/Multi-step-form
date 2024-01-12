@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { flex } from '../styles/mixins'
+import { flex } from '../../../styles/mixins'
 import DetailedPricing from './DetailedPricing'
 import TotalPricing from './TotalPricing'
 

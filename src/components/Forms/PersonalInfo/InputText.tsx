@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { flex } from '../styles/mixins'
-import { colors, mediaQueries } from '../styles/variables'
+import { flex } from '../../../styles/mixins'
+import { colors, mediaQueries } from '../../../styles/variables'
 
 const Label = styled.label`
   ${flex({ direction: 'column' })}

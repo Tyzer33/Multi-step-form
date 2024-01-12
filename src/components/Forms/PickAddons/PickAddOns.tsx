@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { flex } from '../styles/mixins'
-import { mediaQueries } from '../styles/variables'
-import { ADDONS } from '../utils/data'
+import { flex } from '../../../styles/mixins'
+import { mediaQueries } from '../../../styles/variables'
+import { ADDONS } from '../../../utils/data'
 import Addon from './Addon'
 
 const Container = styled.form`

@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import Confirmation from './Confirmation'
 import { colors, mediaQueries } from '../styles/variables'
 import { useFormContext, useMediaQuery } from '../utils/customHooks'
-import Forms from './Forms'
+import Forms from './Forms/Forms'
 import { flex } from '../styles/mixins'
-import FormSteps from './FormSteps'
+import FormSteps from './FormSteps/FormSteps'
 import NavigationButtons from './NavigationButtons'
 
 const Wrapper = styled.main`

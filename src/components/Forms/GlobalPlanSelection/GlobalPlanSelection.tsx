@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { flex } from '../styles/mixins'
+import { flex } from '../../../styles/mixins'
 import PlanSelection from './PlanSelection'
-import { mediaQueries } from '../styles/variables'
+import { mediaQueries } from '../../../styles/variables'
 import PlanSwitch from './PlanSwitch'
 
 const Container = styled.form`

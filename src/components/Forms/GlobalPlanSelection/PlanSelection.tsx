@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { PLANS } from '../utils/data'
-import { flex } from '../styles/mixins'
-import { mediaQueries } from '../styles/variables'
+import { PLANS } from '../../../utils/data'
+import { flex } from '../../../styles/mixins'
+import { mediaQueries } from '../../../styles/variables'
 import PlanCard from './PlanCard'
 
 const Container = styled.div`

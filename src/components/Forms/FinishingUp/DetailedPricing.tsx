@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { flex } from '../styles/mixins'
-import { colors, mediaQueries } from '../styles/variables'
-import { useFormContext } from '../utils/customHooks'
+import { flex } from '../../../styles/mixins'
+import { colors, mediaQueries } from '../../../styles/variables'
+import { useFormContext } from '../../../utils/customHooks'
 import PlanPriceLine from './PlanPriceLine'
 import AddonPriceLine from './AddonPriceLine'
-import { ADDONS } from '../utils/data'
+import { ADDONS } from '../../../utils/data'
 
 const Container = styled.div`
   ${flex({ direction: 'column' })}

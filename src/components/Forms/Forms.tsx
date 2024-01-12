@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { useFormContext } from '../utils/customHooks'
-import { colors, mediaQueries } from '../styles/variables'
-import { flex } from '../styles/mixins'
-import PersonalInfo from './PersonalInfo'
-import GlobalPlanSelection from './GlobalPlanSelection'
-import PickAddOns from './PickAddOns'
-import FinishingUp from './FinishingUp'
-import { FORMSTEPSDESCRIPTION } from '../utils/data'
+import { useFormContext } from '../../utils/customHooks'
+import { colors, mediaQueries } from '../../styles/variables'
+import { flex } from '../../styles/mixins'
+import PersonalInfo from './PersonalInfo/PersonalInfo'
+import GlobalPlanSelection from './GlobalPlanSelection/GlobalPlanSelection'
+import PickAddOns from './PickAddons/PickAddOns'
+import FinishingUp from './FinishingUp/FinishingUp'
+import { FORMSTEPSDESCRIPTION } from '../../utils/data'
 
 const Container = styled.div`
   ${flex({ direction: 'column' })}

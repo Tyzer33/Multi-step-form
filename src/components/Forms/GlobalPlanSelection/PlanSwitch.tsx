@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { expandClickArea, flex } from '../styles/mixins'
-import { colors, transition } from '../styles/variables'
-import { useFormContext } from '../utils/customHooks'
-import Button from './Button'
+import { expandClickArea, flex } from '../../../styles/mixins'
+import { colors, transition } from '../../../styles/variables'
+import { useFormContext } from '../../../utils/customHooks'
+import Button from '../../Button'
 
 const Container = styled.div`
   ${flex({ direction: 'row', justify: 'center', align: 'center' })}
@@ -46,7 +46,6 @@ const SwitchBtn = styled.label<{ $checked: boolean }>`
     background: ${colors.tertiaryClr};
     border-radius: 50%;
 
-    // TODO: Trouver une meilleure façon de faire l'animation
     margin-left: ${({ $checked }) => ($checked ? '100%' : '0')};
     translate: ${({ $checked }) => ($checked ? '-100%' : '0')} 0;
     ${transition}

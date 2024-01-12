@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { colors } from '../styles/variables'
-import { flex } from '../styles/mixins'
-import { ADDONS } from '../utils/data'
-import { useFormContext } from '../utils/customHooks'
-import { AddonsNames } from '../utils/types'
+import { colors } from '../../../styles/variables'
+import { flex } from '../../../styles/mixins'
+import { ADDONS } from '../../../utils/data'
+import { useFormContext } from '../../../utils/customHooks'
+import { AddonsNames } from '../../../utils/types'
 
 const Container = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}
