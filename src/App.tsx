@@ -1,23 +1,20 @@
 import GlobalStyles from './styles/GlobalStyles'
-import Footer from './components/Footer'
 import FormSteps from './components/FormSteps'
 import MainContent from './components/MainContent'
 import { useFormContext, useMediaQuery } from './utils/customHooks'
 import { mediaQueries } from './styles/variables'
-
-// TODO: Remplacer tout le media query 'temp' par celui choisit
-// TODO: Spliter le code en composants plus petits
+import NavigationButtons from './components/NavigationButtons'
 
 function App() {
   const { isCompleted } = useFormContext().formData
-  const isTemp = useMediaQuery(mediaQueries.temp) // temp
+  const isTabletPortraitUp = useMediaQuery(mediaQueries.tabletPortraitUp)
 
   return (
     <>
       <GlobalStyles />
-      {!isTemp && <FormSteps type="header" />}
+      {!isTabletPortraitUp && <FormSteps type="header" />}
       <MainContent />
-      {!isTemp && !isCompleted && <Footer />}
+      {!isTabletPortraitUp && !isCompleted && <NavigationButtons type="footer" />}
     </>
   )
 }

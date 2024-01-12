@@ -5,7 +5,6 @@ export type AddonsNames = keyof typeof ADDONS
 export type Plan = keyof typeof PLANS
 
 export type FormDataKey = keyof FormDataType
-export type FormDataValueOf<K extends FormDataKey> = FormDataType[K]
 
 export type FormDataType = {
   currentStep: number
@@ -18,14 +17,16 @@ export type FormDataType = {
   selectedAddons: AddonsNames[]
 }
 
+export type SetValue = (value: string) => void
+
 export type FormContextType = {
-  setInFormData: <K extends keyof FormDataType>(key: K, value: FormDataValueOf<K>) => void
+  setInFormData: <K extends keyof FormDataType>(key: K, value: FormDataType[K]) => void
   formData: FormDataType
   setNextStep: () => void
   setPrevStep: () => void
-  setName: (name: string) => void
-  setEmail: (email: string) => void
-  setPhoneNumber: (phoneNumber: string) => void
+  setName: SetValue
+  setEmail: SetValue
+  setPhoneNumber: SetValue
   toggleAddon: (addon: AddonsNames) => void
   calculTotal: () => number
 }

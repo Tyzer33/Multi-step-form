@@ -3,7 +3,7 @@ import { useFormContext } from '../utils/customHooks'
 import { colors, mediaQueries } from '../styles/variables'
 import { flex } from '../styles/mixins'
 import PersonalInfo from './PersonalInfo'
-import SelectPlan from './SelectPlan'
+import GlobalPlanSelection from './GlobalPlanSelection'
 import PickAddOns from './PickAddOns'
 import FinishingUp from './FinishingUp'
 import { FORMSTEPSDESCRIPTION } from '../utils/data'
@@ -13,7 +13,7 @@ const Container = styled.div`
   gap: 1.375rem;
   flex: 1;
 
-  @media ${mediaQueries.temp} {
+  @media ${mediaQueries.tabletPortraitUp} {
     gap: 2.25rem;
   }
 `
@@ -28,7 +28,7 @@ const Heading = styled.h1`
   font-weight: 700;
   color: ${colors.secondaryClr};
 
-  @media ${mediaQueries.temp} {
+  @media ${mediaQueries.tabletPortraitUp} {
     font-size: 2rem;
   }
 `
@@ -48,7 +48,7 @@ function Forms() {
         <Description>{description}</Description>
       </TextContainer>
       {currentStep === 0 && <PersonalInfo />}
-      {currentStep === 1 && <SelectPlan />}
+      {currentStep === 1 && <GlobalPlanSelection />}
       {currentStep === 2 && <PickAddOns />}
       {currentStep === 3 && <FinishingUp />}
     </Container>

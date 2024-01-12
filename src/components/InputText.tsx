@@ -11,7 +11,7 @@ const Label = styled.label`
   font-weight: 400;
   color: ${colors.secondaryClr};
 
-  @media ${mediaQueries.temp} {
+  @media ${mediaQueries.tabletPortraitUp} {
     gap: 0.5rem;
     font-size: 0.875rem;
   }
@@ -27,7 +27,7 @@ const Input = styled.input`
   font-weight: 500;
   color: ${colors.secondaryClr};
 
-  @media ${mediaQueries.temp} {
+  @media ${mediaQueries.tabletPortraitUp} {
     padding: 0.875rem 0.9375rem;
     font-size: 1rem;
     border-radius: 0.5rem;
@@ -48,6 +48,27 @@ const Input = styled.input`
   }
 `
 
+function InputText({ type, label, setValue, value, placeholder, autofocus = false }: Props) {
+  return (
+    <Label htmlFor={type}>
+      {label}
+      <Input
+        id={type}
+        type={type}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder={placeholder}
+        spellCheck="false"
+        autoComplete={type === 'text' ? 'name' : type}
+        autoFocus={autofocus}
+        required
+      />
+    </Label>
+  )
+}
+
+export default InputText
+
 type Props = {
   type: 'text' | 'email' | 'tel'
   label: string
@@ -56,24 +77,3 @@ type Props = {
   placeholder: string
   autofocus?: boolean
 }
-
-function InputText({ type, label, setValue, value, placeholder, autofocus = false }: Props) {
-  return (
-    <Label htmlFor={type}>
-      {label}
-      <Input
-        type={type}
-        onChange={(e) => setValue(e.target.value)}
-        value={value}
-        placeholder={placeholder}
-        spellCheck="false"
-        id={type}
-        autoComplete={type === 'text' ? 'name' : type}
-        required
-        autoFocus={autofocus}
-      />
-    </Label>
-  )
-}
-
-export default InputText

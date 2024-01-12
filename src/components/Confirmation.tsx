@@ -12,7 +12,7 @@ const Container = styled.div`
 const Image = styled.img`
   height: 3.5rem;
 
-  @media ${mediaQueries.temp} {
+  @media ${mediaQueries.tabletPortraitUp} {
     height: 5rem;
   }
 `
@@ -23,7 +23,7 @@ const Heading = styled.h1`
   color: ${colors.secondaryClr};
   margin-block: 1.5rem 0.625rem;
 
-  @media ${mediaQueries.temp} {
+  @media ${mediaQueries.tabletPortraitUp} {
     font-size: 2.5rem;
     margin-block: 2rem 1rem;
   }

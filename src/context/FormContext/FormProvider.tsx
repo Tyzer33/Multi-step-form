@@ -1,17 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import FormContext from './FormContext'
-import { AddonsNames, FormDataKey, FormDataType, FormDataValueOf } from '../../utils/types'
+import { AddonsNames, FormDataKey, FormDataType } from '../../utils/types'
 import { ADDONS, PLANS } from '../../utils/data'
-
-type Props = {
-  children: React.ReactNode
-}
 
 // TODO: Faire des vérifications sur les données du formulaire
 
 function FormProvider({ children }: Props) {
   const [formData, setFormData] = useState<FormDataType>({
-    currentStep: 0, // TODO: Tout remettre à 0
+    currentStep: 0,
     name: '',
     email: '',
     phoneNumber: '',
@@ -36,7 +32,7 @@ function FormProvider({ children }: Props) {
   }, [formData.isCompleted, formData])
 
   const setInFormData = useCallback(
-    <K extends FormDataKey>(key: K, value: FormDataValueOf<K>) => {
+    <K extends FormDataKey>(key: K, value: FormDataType[K]) => {
       setFormData((prev) => ({ ...prev, [key]: value }))
     },
     [setFormData],
@@ -56,16 +52,16 @@ function FormProvider({ children }: Props) {
     }))
   }, [])
 
-  const setName = useCallback((name: string) => {
-    setFormData((prev) => ({ ...prev, name }))
+  const setName = useCallback((value: string) => {
+    setFormData((prev) => ({ ...prev, name: value }))
   }, [])
 
-  const setEmail = useCallback((email: string) => {
-    setFormData((prev) => ({ ...prev, email }))
+  const setEmail = useCallback((value: string) => {
+    setFormData((prev) => ({ ...prev, email: value }))
   }, [])
 
-  const setPhoneNumber = useCallback((phoneNumber: string) => {
-    setFormData((prev) => ({ ...prev, phoneNumber }))
+  const setPhoneNumber = useCallback((value: string) => {
+    setFormData((prev) => ({ ...prev, phoneNumber: value }))
   }, [])
 
   const toggleAddon = useCallback((addon: AddonsNames) => {
@@ -118,3 +114,7 @@ function FormProvider({ children }: Props) {
 }
 
 export default FormProvider
+
+type Props = {
+  children: React.ReactNode
+}

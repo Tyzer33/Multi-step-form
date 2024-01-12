@@ -54,17 +54,22 @@ const GlobalStyles = createGlobalStyle`
   // Styles
 
   body {
-    background: top  / 100% auto no-repeat ${colors.background} url(${backgroundImage});
+    /* background: top  / 100% auto no-repeat ${colors.background} url(${backgroundImage});
+    background-image: url(${backgroundImage});
+    background-size: 100vw ;
+    background-repeat: no-repeat;
+    background-position: top center; */
+    background: ${colors.background};
 
-    @media ${mediaQueries.temp} {
+    /* @media ${mediaQueries.tabletPortraitUp} {
       background-image: none;
-    }
+    } */
   }
 
   div#root {
     ${flex({ direction: 'column', align: 'center' })};
 
-    @media ${mediaQueries.temp} {
+    @media ${mediaQueries.tabletPortraitUp} {
       justify-content: center;
     }
   }

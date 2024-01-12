@@ -1,6 +1,5 @@
 import { css } from 'styled-components'
 
-// TODO: Refactoriser les couleurs
 export const colors = {
   background: 'hsl(217, 100%, 97%)',
   innerElBg: 'hsl(231, 100%, 99%)',
@@ -41,5 +40,4 @@ export const mediaQueries = {
   tabletPortraitUp: `(min-width: ${breakpoints.tablet / 16}rem)`,
   tabletLandscapeUp: `(min-width: ${breakpoints.tabletLandscape / 16}rem)`,
   desktopUp: `(min-width: ${breakpoints.desktop / 16}rem)`,
-  temp: `(min-width: 0rem)`, // temp
 }

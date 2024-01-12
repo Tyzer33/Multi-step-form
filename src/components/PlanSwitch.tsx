@@ -1,19 +1,10 @@
 import styled from 'styled-components'
 import { expandClickArea, flex } from '../styles/mixins'
-import PlanSelection from './PlanSelection'
+import { colors, transition } from '../styles/variables'
 import { useFormContext } from '../utils/customHooks'
-import { colors, mediaQueries, transition } from '../styles/variables'
+import Button from './Button'
 
-const Container = styled.form`
-  ${flex({ direction: 'column' })}
-  gap: 1.5rem;
-
-  @media ${mediaQueries.temp} {
-    gap: 2rem;
-  }
-`
-
-const SwitchContainer = styled.div`
+const Container = styled.div`
   ${flex({ direction: 'row', justify: 'center', align: 'center' })}
   gap: 1.5rem;
   background: ${colors.innerElBg};
@@ -21,7 +12,7 @@ const SwitchContainer = styled.div`
   height: 3rem;
 `
 
-const SwitchTextBtn = styled.button<{ $selected: boolean }>`
+const SwitchTextBtn = styled(Button)<{ $selected: boolean }>`
   font-size: 0.875rem;
   font-weight: 700;
   color: ${({ $selected }) => ($selected ? colors.secondaryClr : colors.text)};
@@ -75,42 +66,29 @@ const Checkbox = styled.input`
   pointer-events: none;
 `
 
-// TODO: Renommer ce composant ou le composant PlanSelection
-
-function SelectPlan() {
+function PlanSwitch() {
   const { formData, setInFormData } = useFormContext()
   const { isYearly } = formData
 
   return (
     <Container>
-      <PlanSelection />
-      <SwitchContainer>
-        <SwitchTextBtn
-          type="button"
-          onClick={() => setInFormData('isYearly', false)}
-          $selected={!isYearly}
-        >
-          Monthly
-        </SwitchTextBtn>
-        <SwitchBtn htmlFor="switch" $checked={isYearly}>
-          <Checkbox
-            id="switch"
-            type="checkbox"
-            checked={isYearly}
-            onChange={(e) => setInFormData('isYearly', e.target.checked)}
-            aria-label="Switch between Monthly to yearly plan"
-          />
-        </SwitchBtn>
-        <SwitchTextBtn
-          type="button"
-          onClick={() => setInFormData('isYearly', true)}
-          $selected={isYearly}
-        >
-          Yearly
-        </SwitchTextBtn>
-      </SwitchContainer>
+      <SwitchTextBtn onClick={() => setInFormData('isYearly', false)} $selected={!isYearly}>
+        Monthly
+      </SwitchTextBtn>
+      <SwitchBtn htmlFor="switch" $checked={isYearly}>
+        <Checkbox
+          id="switch"
+          type="checkbox"
+          checked={isYearly}
+          onChange={(e) => setInFormData('isYearly', e.target.checked)}
+          aria-label="Switch between Monthly to yearly plan"
+        />
+      </SwitchBtn>
+      <SwitchTextBtn onClick={() => setInFormData('isYearly', true)} $selected={isYearly}>
+        Yearly
+      </SwitchTextBtn>
     </Container>
   )
 }
 
-export default SelectPlan
+export default PlanSwitch

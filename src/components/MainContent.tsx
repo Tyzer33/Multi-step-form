@@ -14,37 +14,38 @@ const Wrapper = styled.main`
 `
 
 const Container = styled.div`
+  --margin-inline: 1rem;
   background: ${colors.elementBg};
   border-radius: 0.625rem;
   box-shadow: 0 1rem 1.75rem -1rem hsla(0, 0%, 0%, 0.08);
   padding: 2rem 1.5rem;
-  margin: 0 1rem 1.5rem;
+  margin-bottom: 1.5rem;
   max-width: 30rem;
-  width: 100%;
+  width: calc(100% - var(--margin-inline) * 2);
 
-  @media ${mediaQueries.temp} {
+  @media ${mediaQueries.tabletPortraitUp} {
+    --margin-inline: 2rem;
     display: flex;
     padding: 1rem;
-    padding-right: 6.25rem;
+    padding-right: min(10%, 6.25rem);
     max-width: 58.75rem;
-    gap: 6.25rem;
-
-    margin: 2rem; //temp
+    gap: min(7%, 6.25rem);
+    margin-block: 3rem;
   }
 `
 
-// TODO: Trouver un nom plus explicite
 const MainForm = styled.div`
   ${flex({ direction: 'column', justify: 'center' })}
   flex: 1;
   margin-block: 2.5rem 1rem;
+  min-width: 23.5rem;
 `
 
 function MainContent() {
   const { isCompleted } = useFormContext().formData
-  const isTemp = useMediaQuery(mediaQueries.temp) // temp
+  const isTabletPortraitUp = useMediaQuery(mediaQueries.tabletPortraitUp)
 
-  if (isTemp) {
+  if (isTabletPortraitUp) {
     return (
       <Container>
         <FormSteps type="aside" />

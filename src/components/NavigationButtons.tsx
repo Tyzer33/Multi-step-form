@@ -3,18 +3,23 @@ import styled from 'styled-components'
 import { flex } from '../styles/mixins'
 import { colors, mediaQueries, transition } from '../styles/variables'
 import { useFormContext } from '../utils/customHooks'
+import Button from './Button'
 
 const Container = styled.div`
+  @media ${mediaQueries.mobileOnly} {
+    background: ${colors.elementBg};
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 0 1rem 0 hsla(0, 0%, 0%, 0.025);
+    font-size: 0.875rem;
+  }
+
   ${flex({ justify: 'space-between', align: 'center' })}
   font-weight: 500;
-  font-size: 0.875rem;
-
-  @media ${mediaQueries.temp} {
-    font-size: 1rem;
-  }
+  font-size: 1rem;
 `
 
-const Back = styled.button`
+const Back = styled(Button)`
   ${transition}
 
   &:hover,
@@ -23,7 +28,7 @@ const Back = styled.button`
   }
 `
 
-const Next = styled.button`
+const Next = styled(Button)`
   background: ${colors.primaryInteractive};
   color: ${colors.tertiaryClr};
   padding: 0.75rem 1rem;
@@ -41,7 +46,7 @@ const Next = styled.button`
     outline-offset: 0.125rem;
   }
 
-  @media ${mediaQueries.temp} {
+  @media ${mediaQueries.tabletPortraitUp} {
     padding: 1rem 1.5rem;
     border-radius: 0.5rem;
   }
@@ -55,25 +60,23 @@ const Confirm = styled(Next)`
   }
 `
 
-function NavigationButtons() {
+type Props = {
+  type?: 'footer' | 'div'
+}
+
+function NavigationButtons({ type = 'div' }: Props) {
   const { formData, setNextStep, setPrevStep, setInFormData } = useFormContext()
   const { currentStep } = formData
 
   return (
-    <Container>
-      {currentStep > 0 && (
-        <Back type="button" onClick={setPrevStep}>
-          Go Back
-        </Back>
-      )}
+    <Container as={type}>
+      {currentStep > 0 && <Back onClick={setPrevStep}>Go Back</Back>}
       {currentStep === 3 ? (
-        <Confirm type="button" onClick={() => setInFormData('isCompleted', true)} autoFocus>
+        <Confirm onClick={() => setInFormData('isCompleted', true)} autoFocus>
           Confirm
         </Confirm>
       ) : (
-        <Next type="button" onClick={setNextStep}>
-          Next Step
-        </Next>
+        <Next onClick={setNextStep}>Next Step</Next>
       )}
     </Container>
   )

@@ -8,7 +8,7 @@ const Container = styled.form`
   ${flex({ direction: 'column' })}
   gap: 1rem;
 
-  @media ${mediaQueries.temp} {
+  @media ${mediaQueries.tabletPortraitUp} {
     gap: 1.5rem;
   }
 `
