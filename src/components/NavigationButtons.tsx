@@ -65,7 +65,7 @@ type Props = {
 }
 
 function NavigationButtons({ type = 'div' }: Props) {
-  const { formData, setNextStep, setPrevStep, setInFormData } = useFormContext()
+  const { formData, setPrevStep, setInFormData } = useFormContext()
   const { currentStep } = formData
 
   return (
@@ -76,7 +76,9 @@ function NavigationButtons({ type = 'div' }: Props) {
           Confirm
         </Confirm>
       ) : (
-        <Next onClick={setNextStep}>Next Step</Next>
+        <Next type="submit" form="form">
+          Next Step
+        </Next>
       )}
     </Container>
   )

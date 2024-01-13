@@ -42,6 +42,10 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  fieldset {
+    border: none;
+  }
+
   // Fonts
 
   body {

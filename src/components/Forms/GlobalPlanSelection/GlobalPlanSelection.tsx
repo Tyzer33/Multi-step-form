@@ -4,7 +4,7 @@ import PlanSelection from './PlanSelection'
 import { mediaQueries } from '../../../styles/variables'
 import PlanSwitch from './PlanSwitch'
 
-const Container = styled.form`
+const Container = styled.fieldset`
   ${flex({ direction: 'column' })}
   gap: 1.5rem;
 

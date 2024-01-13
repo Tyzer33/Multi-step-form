@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import checkedIcon from '../assets/icon-checkmark.svg'
+import checkedIcon from '../../../assets/icon-checkmark.svg'
 import { colors, mediaQueries, transition } from '../../../styles/variables'
 import { flex } from '../../../styles/mixins'
 import { useFormContext } from '../../../utils/customHooks'

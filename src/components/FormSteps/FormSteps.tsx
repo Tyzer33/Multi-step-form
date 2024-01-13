@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { colors, mediaQueries } from '../../styles/variables'
 import { useFormContext } from '../../utils/customHooks'
 import { FORMSTEPSDESCRIPTION } from '../../utils/data'
-import headerBackground from '../assets/bg-sidebar-mobile.svg'
-import asideBackground from '../assets/bg-sidebar-desktop.svg'
+import headerBackground from '../../assets/bg-sidebar-mobile.svg'
+import asideBackground from '../../assets/bg-sidebar-desktop.svg'
 import Step from './Step'
 
 const Container = styled.div`

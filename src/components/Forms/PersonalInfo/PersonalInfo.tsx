@@ -4,7 +4,7 @@ import { useFormContext } from '../../../utils/customHooks'
 import InputText from './InputText'
 import { mediaQueries } from '../../../styles/variables'
 
-const Container = styled.form`
+const Container = styled.fieldset`
   ${flex({ direction: 'column' })}
   gap: 1rem;
 

@@ -8,7 +8,7 @@ import PickAddOns from './PickAddons/PickAddOns'
 import FinishingUp from './FinishingUp/FinishingUp'
 import { FORMSTEPSDESCRIPTION } from '../../utils/data'
 
-const Container = styled.div`
+const Container = styled.form`
   ${flex({ direction: 'column' })}
   gap: 1.375rem;
   flex: 1;
@@ -38,11 +38,12 @@ const Description = styled.div`
 `
 
 function Forms() {
-  const { currentStep } = useFormContext().formData
+  const { formData, setNextStep } = useFormContext()
+  const { currentStep } = formData
   const { heading, description } = FORMSTEPSDESCRIPTION[currentStep]
 
   return (
-    <Container>
+    <Container id="form" onSubmit={(e) => setNextStep(e)}>
       <TextContainer>
         <Heading>{heading}</Heading>
         <Description>{description}</Description>

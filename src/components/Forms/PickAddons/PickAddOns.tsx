@@ -4,7 +4,7 @@ import { mediaQueries } from '../../../styles/variables'
 import { ADDONS } from '../../../utils/data'
 import Addon from './Addon'
 
-const Container = styled.form`
+const Container = styled.fieldset`
   ${flex({ direction: 'column' })}
   gap: .75rem;
 

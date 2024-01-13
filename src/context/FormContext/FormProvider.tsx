@@ -1,9 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { ReactNode, useCallback, useMemo, useState } from 'react'
 import FormContext from './FormContext'
 import { AddonsNames, FormDataKey, FormDataType } from '../../utils/types'
 import { ADDONS, PLANS } from '../../utils/data'
-
-// TODO: Faire des vérifications sur les données du formulaire
 
 function FormProvider({ children }: Props) {
   const [formData, setFormData] = useState<FormDataType>({
@@ -26,11 +24,6 @@ function FormProvider({ children }: Props) {
 
   ------------ */
 
-  useEffect(() => {
-    if (!formData.isCompleted) return
-    console.log(formData)
-  }, [formData.isCompleted, formData])
-
   const setInFormData = useCallback(
     <K extends FormDataKey>(key: K, value: FormDataType[K]) => {
       setFormData((prev) => ({ ...prev, [key]: value }))
@@ -38,7 +31,8 @@ function FormProvider({ children }: Props) {
     [setFormData],
   )
 
-  const setNextStep = useCallback(() => {
+  const setNextStep = useCallback((e: React.FormEvent) => {
+    e.preventDefault()
     setFormData((prev) => ({
       ...prev,
       currentStep: prev.currentStep < 3 ? prev.currentStep + 1 : 3,
@@ -116,5 +110,5 @@ function FormProvider({ children }: Props) {
 export default FormProvider
 
 type Props = {
-  children: React.ReactNode
+  children: ReactNode
 }

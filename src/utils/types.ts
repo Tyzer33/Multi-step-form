@@ -22,7 +22,7 @@ export type SetValue = (value: string) => void
 export type FormContextType = {
   setInFormData: <K extends keyof FormDataType>(key: K, value: FormDataType[K]) => void
   formData: FormDataType
-  setNextStep: () => void
+  setNextStep: (e: React.FormEvent) => void
   setPrevStep: () => void
   setName: SetValue
   setEmail: SetValue
