@@ -9,6 +9,15 @@ const Container = styled.div`
   ${flex({ justify: 'space-between', align: 'center' })}
 `
 
+const PlanInfos = styled.div`
+  ${flex({ direction: 'column', align: 'flex-start' })}
+  gap: 0.125rem;
+
+  @media ${mediaQueries.tabletPortraitUp} {
+    gap: 0.375rem;
+  }
+`
+
 const PlanDetails = styled.h2`
   font-size: 0.875rem;
   font-weight: 500;
@@ -21,9 +30,6 @@ const PlanDetails = styled.h2`
 
 const ChangeButton = styled(Button)`
   font-size: 0.875rem;
-  user-select: none;
-  cursor: pointer;
-  margin-top: 0.125rem;
   text-decoration: underline;
   ${transition}
 
@@ -53,10 +59,10 @@ function PlanPriceLine() {
 
   return (
     <Container>
-      <div>
+      <PlanInfos>
         <PlanDetails>{formattedPlanText}</PlanDetails>
         <ChangeButton onClick={() => setInFormData('currentStep', 1)}>Change</ChangeButton>
-      </div>
+      </PlanInfos>
       <PlanPrice>{formattedPriceText}</PlanPrice>
     </Container>
   )

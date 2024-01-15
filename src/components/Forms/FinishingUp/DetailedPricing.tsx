@@ -14,9 +14,9 @@ const Container = styled.div`
   border-radius: 0.5rem;
 
   @media ${mediaQueries.tabletPortraitUp} {
+    gap: 1.25rem;
     padding: 1.5rem;
     padding-top: 1.25rem;
-    gap: 1.25rem;
   }
 `
 
@@ -32,7 +32,6 @@ const Line = styled.hr`
 
 function DetailedPricing() {
   const { selectedAddons } = useFormContext().formData
-
   const detailedSelectedAddons = selectedAddons.map((selectedAddon) => ADDONS[selectedAddon])
 
   return (

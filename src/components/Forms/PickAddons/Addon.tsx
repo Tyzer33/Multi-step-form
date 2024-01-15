@@ -6,7 +6,7 @@ import { useFormContext } from '../../../utils/customHooks'
 import { AddonsNames } from '../../../utils/types'
 
 const Container = styled.label<{ $selected: boolean }>`
-  ${flex({ direction: 'row', align: 'center' })}
+  ${flex({ align: 'center' })}
   border: 1px solid ${colors.border};
   padding: 0.875rem 1rem;
   gap: 0.875rem;
@@ -22,7 +22,7 @@ const Container = styled.label<{ $selected: boolean }>`
   ${({ $selected }) =>
     $selected &&
     css`
-      border: 1px solid ${colors.secondaryInteractive};
+      border-color: ${colors.secondaryInteractive};
       background: ${colors.innerElBg};
     `}
 
@@ -33,7 +33,7 @@ const Container = styled.label<{ $selected: boolean }>`
 
   @supports selector(:has(:focus-visible)) {
     &:has(:focus-visible) {
-      border: 1px solid ${colors.secondaryInteractive};
+      border-color: ${colors.secondaryInteractive};
       scale: 0.975;
     }
   }
@@ -42,7 +42,7 @@ const Container = styled.label<{ $selected: boolean }>`
 const StyledCheckbox = styled.div<{ $selected: boolean }>`
   ${flex({ align: 'center', justify: 'center' })}
   height: 1.25rem;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1;
   border-radius: 0.25rem;
   border: 1px solid ${colors.border};
 
@@ -100,12 +100,12 @@ const Price = styled.p`
 function Addon({ name, description, price, autoFocus = false }: Props) {
   const { formData, toggleAddon } = useFormContext()
   const { selectedAddons, isYearly } = formData
+
   return (
     <Container htmlFor={name} $selected={selectedAddons.includes(name)}>
       <StyledCheckbox $selected={selectedAddons.includes(name)}>
         <Checkbox
           type="checkbox"
-          name="plan"
           id={name}
           checked={selectedAddons.includes(name)}
           onChange={() => toggleAddon(name)}

@@ -22,7 +22,7 @@ export const colors = {
 
   error: 'hsl(354, 84%, 57%)',
 
-  // - Pastel blue: hsl(228, 100%, 84%)
+  // hsl(228, 100%, 84%)
 }
 
 export const transition = css`

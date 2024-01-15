@@ -8,9 +8,9 @@ import FormSteps from './FormSteps/FormSteps'
 import NavigationButtons from './NavigationButtons'
 
 const Wrapper = styled.main`
+  ${flex({ direction: 'column', align: 'center' })}
   flex: 1;
   width: 100%;
-  ${flex({ direction: 'column', align: 'center' })}
 `
 
 const Container = styled.div`

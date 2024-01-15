@@ -42,7 +42,7 @@ const SwitchBtn = styled.label<{ $checked: boolean }>`
   &::after {
     content: '';
     height: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1;
     background: ${colors.tertiaryClr};
     border-radius: 50%;
 
@@ -65,7 +65,7 @@ const Checkbox = styled.input`
   pointer-events: none;
 `
 
-function PlanSwitch() {
+function BillingPlanSwitch() {
   const { formData, setInFormData } = useFormContext()
   const { isYearly } = formData
 
@@ -80,7 +80,7 @@ function PlanSwitch() {
           type="checkbox"
           checked={isYearly}
           onChange={(e) => setInFormData('isYearly', e.target.checked)}
-          aria-label="Switch between Monthly to yearly plan"
+          aria-label="Switch between monthly to yearly plan"
         />
       </SwitchBtn>
       <SwitchTextBtn onClick={() => setInFormData('isYearly', true)} $selected={isYearly}>
@@ -90,4 +90,4 @@ function PlanSwitch() {
   )
 }
 
-export default PlanSwitch
+export default BillingPlanSwitch

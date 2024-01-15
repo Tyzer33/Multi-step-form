@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { flex } from '../../../styles/mixins'
-import PlanSelection from './PlanSelection'
+import PlanTierSelection from './PlanTierSelection'
 import { mediaQueries } from '../../../styles/variables'
-import PlanSwitch from './PlanSwitch'
+import BillingPlanSwitch from './BillingPlanSwitch'
 
 const Container = styled.fieldset`
   ${flex({ direction: 'column' })}
@@ -16,8 +16,8 @@ const Container = styled.fieldset`
 function GlobalPlanSelection() {
   return (
     <Container>
-      <PlanSelection />
-      <PlanSwitch />
+      <PlanTierSelection />
+      <BillingPlanSwitch />
     </Container>
   )
 }

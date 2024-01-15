@@ -2,7 +2,7 @@ import arcadeLogo from '../assets/icon-arcade.svg'
 import advancedLogo from '../assets/icon-advanced.svg'
 import proLogo from '../assets/icon-pro.svg'
 
-export const FORMSTEPSDESCRIPTION = [
+export const FORM_STEPS_DESCRIPTION = [
   {
     heading: 'Personal info',
     short: 'YOUR INFO',

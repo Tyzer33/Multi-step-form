@@ -26,15 +26,16 @@ const TotalPrice = styled.p`
 `
 
 function TotalPricing() {
-  const { formData, calculTotal } = useFormContext()
+  const { formData, totalPrice } = useFormContext()
   const { isYearly } = formData
 
-  const frequency = isYearly ? 'yr' : 'mo'
+  const frequencyText = isYearly ? 'year' : 'month'
+  const frequencyPrice = isYearly ? 'yr' : 'mo'
 
   return (
     <Container>
-      <TotalText>{`Total (per ${isYearly ? 'year' : 'month'})`}</TotalText>
-      <TotalPrice>{`$${calculTotal()}/${frequency}`}</TotalPrice>
+      <TotalText>Total (per {frequencyText})</TotalText>
+      <TotalPrice>{`$${totalPrice}/${frequencyPrice}`}</TotalPrice>
     </Container>
   )
 }

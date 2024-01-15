@@ -9,12 +9,17 @@ function App() {
   const { isCompleted } = useFormContext().formData
   const isTabletPortraitUp = useMediaQuery(mediaQueries.tabletPortraitUp)
 
-  return (
+  return isTabletPortraitUp ? (
     <>
       <GlobalStyles />
-      {!isTabletPortraitUp && <FormSteps type="header" />}
       <MainContent />
-      {!isTabletPortraitUp && !isCompleted && <NavigationButtons type="footer" />}
+    </>
+  ) : (
+    <>
+      <GlobalStyles />
+      <FormSteps type="header" />
+      <MainContent />
+      {!isCompleted && <NavigationButtons type="footer" />}
     </>
   )
 }

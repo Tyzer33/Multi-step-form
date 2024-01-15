@@ -7,7 +7,7 @@ export type Plan = keyof typeof PLANS
 export type FormDataKey = keyof FormDataType
 
 export type FormDataType = {
-  currentStep: number
+  currentStep: 0 | 1 | 2 | 3
   name: string
   email: string
   phoneNumber: string
@@ -17,18 +17,13 @@ export type FormDataType = {
   selectedAddons: AddonsNames[]
 }
 
-export type SetValue = (value: string) => void
-
 export type FormContextType = {
   setInFormData: <K extends keyof FormDataType>(key: K, value: FormDataType[K]) => void
   formData: FormDataType
   setNextStep: (e: React.FormEvent) => void
   setPrevStep: () => void
-  setName: SetValue
-  setEmail: SetValue
-  setPhoneNumber: SetValue
   toggleAddon: (addon: AddonsNames) => void
-  calculTotal: () => number
+  totalPrice: number
 }
 
 export type FlexMixin = {

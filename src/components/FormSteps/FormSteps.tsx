@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { colors, mediaQueries } from '../../styles/variables'
 import { useFormContext } from '../../utils/customHooks'
-import { FORMSTEPSDESCRIPTION } from '../../utils/data'
+import { FORM_STEPS_DESCRIPTION } from '../../utils/data'
 import headerBackground from '../../assets/bg-sidebar-mobile.svg'
 import asideBackground from '../../assets/bg-sidebar-desktop.svg'
 import Step from './Step'
@@ -37,8 +37,8 @@ function FormSteps({ type }: Props) {
   return (
     <Container as={type}>
       {type === 'header' && <BackgroundHeader />}
-      {FORMSTEPSDESCRIPTION.map(({ heading, short }, index) => (
-        <Step key={heading} type={type} short={short} index={index} currentStep={currentStep} />
+      {FORM_STEPS_DESCRIPTION.map(({ short }, index) => (
+        <Step key={short} type={type} short={short} index={index} currentStep={currentStep} />
       ))}
     </Container>
   )

@@ -14,7 +14,7 @@ const Container = styled.fieldset`
 `
 
 function PersonalInfo() {
-  const { formData, setName, setEmail, setPhoneNumber } = useFormContext()
+  const { formData, setInFormData } = useFormContext()
   const { name, email, phoneNumber } = formData
 
   return (
@@ -22,7 +22,7 @@ function PersonalInfo() {
       <InputText
         type="text"
         label="Name"
-        setValue={setName}
+        setValue={(value) => setInFormData('name', value)}
         value={name}
         placeholder="e.g. Stephen King"
         autofocus
@@ -30,14 +30,14 @@ function PersonalInfo() {
       <InputText
         type="email"
         label="Email Address"
-        setValue={setEmail}
+        setValue={(value) => setInFormData('email', value)}
         value={email}
         placeholder="e.g. stephenking@lorem.com"
       />
       <InputText
         type="tel"
         label="Phone Number"
-        setValue={setPhoneNumber}
+        setValue={(value) => setInFormData('phoneNumber', value)}
         value={phoneNumber}
         placeholder="e.g. +1 234 567 890"
       />

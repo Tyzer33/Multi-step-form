@@ -6,7 +6,7 @@ import PersonalInfo from './PersonalInfo/PersonalInfo'
 import GlobalPlanSelection from './GlobalPlanSelection/GlobalPlanSelection'
 import PickAddOns from './PickAddons/PickAddOns'
 import FinishingUp from './FinishingUp/FinishingUp'
-import { FORMSTEPSDESCRIPTION } from '../../utils/data'
+import { FORM_STEPS_DESCRIPTION } from '../../utils/data'
 
 const Container = styled.form`
   ${flex({ direction: 'column' })}
@@ -40,7 +40,7 @@ const Description = styled.div`
 function Forms() {
   const { formData, setNextStep } = useFormContext()
   const { currentStep } = formData
-  const { heading, description } = FORMSTEPSDESCRIPTION[currentStep]
+  const { heading, description } = FORM_STEPS_DESCRIPTION[currentStep]
 
   return (
     <Container id="form" onSubmit={(e) => setNextStep(e)}>

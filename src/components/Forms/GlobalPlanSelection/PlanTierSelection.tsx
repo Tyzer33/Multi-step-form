@@ -14,16 +14,16 @@ const Container = styled.div`
   }
 `
 
-function PlanSelection() {
-  const PLANSARR = Object.values(PLANS)
+function PlanTierSelection() {
+  const PLANS_ARR = Object.values(PLANS)
 
   return (
     <Container>
-      {PLANSARR.map(({ name, price, logo }, index) => (
+      {PLANS_ARR.map(({ name, price, logo }, index) => (
         <PlanCard key={name} name={name} price={price} logo={logo} autoFocus={index === 0} />
       ))}
     </Container>
   )
 }
 
-export default PlanSelection
+export default PlanTierSelection

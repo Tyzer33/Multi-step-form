@@ -11,8 +11,8 @@ const Container = styled.label<{ $selected: boolean }>`
   padding-left: 1.125rem;
   gap: 0.875rem;
   border-radius: 0.5rem;
-  cursor: pointer;
   user-select: none;
+  cursor: pointer;
   ${transition}
 
   &:hover {
@@ -22,7 +22,7 @@ const Container = styled.label<{ $selected: boolean }>`
   ${({ $selected }) =>
     $selected &&
     css`
-      border: 1px solid ${colors.secondaryInteractive};
+      border-color: ${colors.secondaryInteractive};
       background: ${colors.innerElBg};
     `}
 
@@ -50,7 +50,7 @@ const RadioButton = styled.input`
 
 const Logo = styled.img`
   height: 2.5rem;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1;
 `
 
 const TextContainer = styled.div`
@@ -88,7 +88,7 @@ function PlanCard({ name, price, logo, autoFocus = false }: Props) {
         onChange={(e) => e.target.checked && setInFormData('selectedPlan', name)}
         autoFocus={autoFocus}
       />
-      <Logo src={logo} alt={`${name}'s logo`} />
+      <Logo src={logo} alt={`${name}'s icon`} />
       <TextContainer>
         <Name>{name}</Name>
         <Price>{isYearly ? `$${price.yearly}/yr` : `$${price.monthly}/mo`}</Price>

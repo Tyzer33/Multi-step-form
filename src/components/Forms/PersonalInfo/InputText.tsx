@@ -99,11 +99,11 @@ function InputText({ type, label, setValue, value, placeholder, autofocus = fals
   return (
     <Container>
       <TextContainer>
-        <Label htmlFor={type}>{label}</Label>
+        <Label htmlFor={label}>{label}</Label>
         {error !== '' && <ErrorMessage>{error}</ErrorMessage>}
       </TextContainer>
       <Input
-        id={type}
+        id={label}
         type={type}
         value={value}
         placeholder={placeholder}
@@ -115,7 +115,6 @@ function InputText({ type, label, setValue, value, placeholder, autofocus = fals
         onBlur={(e) => handleError(e)}
         $isError={error !== ''}
         required
-        pattern={type === 'tel' ? '^[0-9]{10}$' : undefined}
       />
     </Container>
   )

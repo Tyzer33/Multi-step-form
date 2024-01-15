@@ -1,10 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 import { colors, mediaQueries } from './variables'
-import backgroundImage from '../assets/bg-sidebar-mobile.svg'
 import { flex } from './mixins'
 
 const GlobalStyles = createGlobalStyle`
-  // Reset
+  /* Reset */
 
   *, *::before, *::after {
     box-sizing: border-box;
@@ -46,7 +45,7 @@ const GlobalStyles = createGlobalStyle`
     border: none;
   }
 
-  // Fonts
+  /* Fonts */
 
   body {
     font-family: 'Ubuntu', sans-serif;
@@ -55,19 +54,10 @@ const GlobalStyles = createGlobalStyle`
     color: ${colors.text};
   }
 
-  // Styles
+  /* Styles */
 
   body {
-    /* background: top  / 100% auto no-repeat ${colors.background} url(${backgroundImage});
-    background-image: url(${backgroundImage});
-    background-size: 100vw ;
-    background-repeat: no-repeat;
-    background-position: top center; */
     background: ${colors.background};
-
-    /* @media ${mediaQueries.tabletPortraitUp} {
-      background-image: none;
-    } */
   }
 
   div#root {

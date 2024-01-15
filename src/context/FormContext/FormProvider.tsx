@@ -15,6 +15,8 @@ function FormProvider({ children }: Props) {
     isCompleted: false,
   })
 
+  const { selectedPlan, selectedAddons, isYearly } = formData
+
   /* Send data to server
 
   useEffect(() => {
@@ -31,31 +33,25 @@ function FormProvider({ children }: Props) {
     [setFormData],
   )
 
+  function clampStep(step: number): 0 | 1 | 2 | 3 {
+    if (step < 0) return 0
+    if (step > 3) return 3
+    return step as 0 | 1 | 2 | 3
+  }
+
   const setNextStep = useCallback((e: React.FormEvent) => {
     e.preventDefault()
     setFormData((prev) => ({
       ...prev,
-      currentStep: prev.currentStep < 3 ? prev.currentStep + 1 : 3,
+      currentStep: clampStep(prev.currentStep + 1),
     }))
   }, [])
 
   const setPrevStep = useCallback(() => {
     setFormData((prev) => ({
       ...prev,
-      currentStep: prev.currentStep > 0 ? prev.currentStep - 1 : 0,
+      currentStep: clampStep(prev.currentStep - 1),
     }))
-  }, [])
-
-  const setName = useCallback((value: string) => {
-    setFormData((prev) => ({ ...prev, name: value }))
-  }, [])
-
-  const setEmail = useCallback((value: string) => {
-    setFormData((prev) => ({ ...prev, email: value }))
-  }, [])
-
-  const setPhoneNumber = useCallback((value: string) => {
-    setFormData((prev) => ({ ...prev, phoneNumber: value }))
   }, [])
 
   const toggleAddon = useCallback((addon: AddonsNames) => {
@@ -67,8 +63,7 @@ function FormProvider({ children }: Props) {
     })
   }, [])
 
-  const calculTotal = useCallback(() => {
-    const { selectedPlan, selectedAddons, isYearly } = formData
+  const totalPrice = useMemo(() => {
     const billingFrequency = isYearly ? 'yearly' : 'monthly'
     const selectedPlanPrice = PLANS[selectedPlan].price[billingFrequency]
     const addonsTotalPrice = selectedAddons.reduce(
@@ -77,7 +72,7 @@ function FormProvider({ children }: Props) {
     )
 
     return selectedPlanPrice + addonsTotalPrice
-  }, [formData])
+  }, [selectedPlan, selectedAddons, isYearly])
 
   const value = useMemo(
     () => ({
@@ -85,23 +80,10 @@ function FormProvider({ children }: Props) {
       formData,
       setNextStep,
       setPrevStep,
-      setName,
-      setEmail,
-      setPhoneNumber,
       toggleAddon,
-      calculTotal,
+      totalPrice,
     }),
-    [
-      setInFormData,
-      formData,
-      setNextStep,
-      setPrevStep,
-      setName,
-      setEmail,
-      setPhoneNumber,
-      toggleAddon,
-      calculTotal,
-    ],
+    [setInFormData, formData, setNextStep, setPrevStep, toggleAddon, totalPrice],
   )
 
   return <FormContext.Provider value={value}>{children}</FormContext.Provider>

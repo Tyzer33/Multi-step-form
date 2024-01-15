@@ -43,13 +43,6 @@ const StepName = styled.h3`
   letter-spacing: 0.1em;
 `
 
-type Props = {
-  type: 'header' | 'aside'
-  short: string
-  index: number
-  currentStep: number
-}
-
 function Step({ type, short, index, currentStep }: Props) {
   if (type === 'aside') {
     return (
@@ -66,3 +59,10 @@ function Step({ type, short, index, currentStep }: Props) {
 }
 
 export default Step
+
+type Props = {
+  type: 'header' | 'aside'
+  short: string
+  index: number
+  currentStep: number
+}

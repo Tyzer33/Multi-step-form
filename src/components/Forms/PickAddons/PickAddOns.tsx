@@ -14,11 +14,11 @@ const Container = styled.fieldset`
 `
 
 function PickAddOns() {
-  const ADDONSARR = Object.values(ADDONS)
+  const ADDONS_ARR = Object.values(ADDONS)
 
   return (
     <Container>
-      {ADDONSARR.map(({ name, description, price }, index) => (
+      {ADDONS_ARR.map(({ name, description, price }, index) => (
         <Addon
           key={name}
           name={name}

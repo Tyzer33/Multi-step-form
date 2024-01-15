@@ -1,22 +1,23 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { flex } from '../styles/mixins'
 import { colors, mediaQueries, transition } from '../styles/variables'
 import { useFormContext } from '../utils/customHooks'
 import Button from './Button'
 
-const Container = styled.div`
-  @media ${mediaQueries.mobileOnly} {
-    background: ${colors.elementBg};
-    width: 100%;
-    padding: 1rem;
-    box-shadow: 0 0 1rem 0 hsla(0, 0%, 0%, 0.025);
-    font-size: 0.875rem;
-  }
-
+const Container = styled.div<{ $isFooter: boolean }>`
   ${flex({ justify: 'space-between', align: 'center' })}
   font-weight: 500;
   font-size: 1rem;
+
+  ${({ $isFooter }) =>
+    $isFooter &&
+    css`
+      background: ${colors.elementBg};
+      width: 100%;
+      padding: 1rem;
+      box-shadow: 0 0 1rem 0 hsla(0, 0%, 0%, 0.025);
+      font-size: 0.875rem;
+    `}
 `
 
 const Back = styled(Button)`
@@ -69,7 +70,7 @@ function NavigationButtons({ type = 'div' }: Props) {
   const { currentStep } = formData
 
   return (
-    <Container as={type}>
+    <Container as={type} $isFooter={type === 'footer'}>
       {currentStep > 0 && <Back onClick={setPrevStep}>Go Back</Back>}
       {currentStep === 3 ? (
         <Confirm onClick={() => setInFormData('isCompleted', true)} autoFocus>
