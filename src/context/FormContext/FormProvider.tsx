@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useMemo, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import FormContext from './FormContext'
 import { AddonsNames, FormDataKey, FormDataType } from '../../utils/types'
 import { ADDONS, PLANS } from '../../utils/data'
@@ -17,14 +17,10 @@ function FormProvider({ children }: Props) {
 
   const { selectedPlan, selectedAddons, isYearly } = formData
 
-  /* Send data to server
-
   useEffect(() => {
     if (!formData.isCompleted) return
-    fetch()
-  }, [formData.isCompleted])
-
-  ------------ */
+    console.log(formData) // Send data to server
+  }, [formData])
 
   const setInFormData = useCallback(
     <K extends FormDataKey>(key: K, value: FormDataType[K]) => {
